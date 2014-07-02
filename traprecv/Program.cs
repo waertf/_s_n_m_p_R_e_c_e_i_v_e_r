@@ -57,10 +57,10 @@ namespace traprecv {
 						// Parse SNMP Version 2 TRAP packet 
                         SnmpV3Packet pkt = SnmpV3Packet.DiscoveryRequest();
 						pkt.decode(indata, inlen);
-						Console.WriteLine("** SNMP Version 2 TRAP received from {0}:", inep.ToString());
+						Console.WriteLine("** SNMP Version 3 TRAP received from {0}:", inep.ToString());
                         if (pkt.Version != SnmpVersion.Ver3)
                         {
-							Console.WriteLine("*** NOT an SNMPv2 trap ****");
+							Console.WriteLine("*** NOT an SNMPv3 trap ****");
 						} else {
 							//Console.WriteLine("*** Community: {0}", pkt.Community.ToString());
                             StringBuilder sb = new StringBuilder();
@@ -84,7 +84,7 @@ namespace traprecv {
                                 sb.Append(v.Oid.ToString()).Append(" = ").Append(v.Value.ToString()).AppendLine();
 							}
                             SiAuto.Main.LogStringBuilder("receive trp",sb);
-							Console.WriteLine("** End of SNMP Version 2 TRAP data.");
+							Console.WriteLine("** End of SNMP Version 3 TRAP data.");
                             
 						}
 					}
