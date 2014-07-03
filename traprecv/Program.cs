@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
@@ -9,7 +11,7 @@ using Gurock.SmartInspect;
 namespace traprecv {
 	class Program {
 		static void Main(string[] args) {
-
+		    
             SiAuto.Si.Enabled = true;
             SiAuto.Si.Level = Level.Debug;
             SiAuto.Si.Connections = @"file(filename=""" + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\log.sil\",rotate=weekly,append=true,maxparts=5,maxsize=500MB)";
@@ -94,5 +96,30 @@ namespace traprecv {
 				}
 			}
 		}
+
+	    static DateTime convertOctetStringToDateTime(string input)
+        {
+            /*
+            var b = "07 DE 06 1E 07 2A 16 09 2B 08 00"
+.Split(' ')
+.Select(s => byte.Parse(s, NumberStyles.HexNumber))
+.ToArray();
+            */
+            var b = input
+.Split(' ')
+.Select(s => byte.Parse(s, NumberStyles.HexNumber))
+.ToArray();
+
+            int year = b[0] * 256 + b[1];
+            int month = b[2];
+            int day = b[3];
+            int hour = b[4];
+            int min = b[5];
+            int sec = b[6];
+
+            DateTime dt = new DateTime(year, month, day, hour, min, sec);
+            //Console.WriteLine(dt);
+	        return dt;
+        }
 	}
 }
