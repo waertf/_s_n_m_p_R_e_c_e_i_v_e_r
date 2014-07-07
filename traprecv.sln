@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30324.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "traprecv", "traprecv\traprecv.csproj", "{C191C2CC-0CC2-4B96-B8BC-14F18CD41C3B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snmpV3Sender", "snmpV3Sender\snmpV3Sender.csproj", "{6F661E7F-839A-4795-806D-66308878314B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "checkIfIp4Address", "checkIfIp4Address\checkIfIp4Address.csproj", "{B1E930B1-F8C5-42D8-85C0-5339DD40728D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +21,10 @@ Global
 		{6F661E7F-839A-4795-806D-66308878314B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F661E7F-839A-4795-806D-66308878314B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F661E7F-839A-4795-806D-66308878314B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1E930B1-F8C5-42D8-85C0-5339DD40728D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1E930B1-F8C5-42D8-85C0-5339DD40728D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1E930B1-F8C5-42D8-85C0-5339DD40728D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1E930B1-F8C5-42D8-85C0-5339DD40728D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
