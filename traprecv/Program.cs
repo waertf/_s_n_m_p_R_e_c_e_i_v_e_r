@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using CsvHelper;
 using SnmpSharpNet;
 using Gurock.SmartInspect;
 namespace traprecv {
@@ -106,6 +107,7 @@ namespace traprecv {
                                             {
                                                 Console.WriteLine(m.Value + " valid");
                                                 ipAddress = m.Value;
+                                                ipAddress = ip;
                                             }
                                             else
                                             {
@@ -123,6 +125,19 @@ namespace traprecv {
                                         break;
 							    }
 							}
+						    if (serverityLevel != null && location != null && ipAddress != null && eventMessage != null)
+						    {
+                                using (StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + "\\" + DateTime.Now.ToString("yy-MM-dd") + ".csv", true))
+                                {
+                                    var csv = new CsvWriter(sw);
+                                    csv.WriteField(serverityLevel);
+                                    csv.WriteField(location);
+                                    csv.WriteField(ipAddress);
+                                    csv.WriteField(eventMessage);
+                                    csv.NextRecord();
+
+                                }
+						    }
                             SiAuto.Main.LogStringBuilder("receive trp",sb);
 							Console.WriteLine("** End of SNMP Version 3 TRAP data.");
                             
