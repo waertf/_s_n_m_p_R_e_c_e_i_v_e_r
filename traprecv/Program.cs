@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using SnmpSharpNet;
 using Gurock.SmartInspect;
 namespace traprecv {
@@ -80,10 +81,47 @@ namespace traprecv {
                             Console.WriteLine("trapObjectID.0 : {0}", pkt.Pdu.TrapObjectID.ToString());
 							Console.WriteLine("*** VarBind count: {0}", pkt.Pdu.VbList.Count);
 							Console.WriteLine("*** VarBind content:");
+						    string serverityLevel = null, ipAddress = null, eventMessage = null,location=null;
 							foreach (Vb v in pkt.Pdu.VbList) {
 								Console.WriteLine("**** {0} {1}: {2}", 
 								   v.Oid.ToString(), SnmpConstants.GetTypeName(v.Value.Type), v.Value.ToString());
                                 sb.Append(v.Oid.ToString()).Append(" = ").Append(v.Value.ToString()).AppendLine();
+							    switch (v.Oid.ToString())
+							    {
+                                    case "1.3.6.1.4.1.161.3.10.105.9.0"://severity level
+							            serverityLevel = v.Value.ToString();
+                                        break;
+                                    case "1.3.6.1.4.1.161.3.10.105.8.0"://location
+                                        location = v.Value.ToString();
+                                        break;
+                                    case "1.3.6.1.4.1.161.3.10.105.10.0"://IpAddress
+							            try
+							            {
+                                            string ip = v.Value.ToString();
+                                            string ValidIpAddressRegex = @"^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)";
+                                            Regex r = new Regex(ValidIpAddressRegex, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+
+                                            Match m = r.Match(ip);
+                                            if (m.Success)
+                                            {
+                                                Console.WriteLine(m.Value + " valid");
+                                                ipAddress = m.Value;
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("invalid");
+                                            }
+							            }
+							            catch (Exception)
+							            {
+							                
+							                throw;
+							            }
+                                        break;
+                                    case "1.3.6.1.4.1.161.3.10.105.13.0"://event message
+                                        eventMessage = v.Value.ToString();
+                                        break;
+							    }
 							}
                             SiAuto.Main.LogStringBuilder("receive trp",sb);
 							Console.WriteLine("** End of SNMP Version 3 TRAP data.");
