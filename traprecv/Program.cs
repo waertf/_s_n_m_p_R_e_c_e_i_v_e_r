@@ -127,6 +127,19 @@ namespace traprecv {
 							}
 						    if (serverityLevel != null && location != null && ipAddress != null && eventMessage != null)
 						    {
+						        if (!File.Exists(Environment.CurrentDirectory + "\\" + DateTime.Now.ToString("yy-MM-dd") + ".csv"))
+						        {
+                                    using (StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + "\\" + DateTime.Now.ToString("yy-MM-dd") + ".csv", true))
+                                    {
+                                        var csv = new CsvWriter(sw);
+                                        csv.WriteField("serverityLevel");
+                                        csv.WriteField("location");
+                                        csv.WriteField("ipAddress");
+                                        csv.WriteField("eventMessage");
+                                        csv.NextRecord();
+
+                                    }
+						        }
                                 using (StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + "\\" + DateTime.Now.ToString("yy-MM-dd") + ".csv", true))
                                 {
                                     var csv = new CsvWriter(sw);
