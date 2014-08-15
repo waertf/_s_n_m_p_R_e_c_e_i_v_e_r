@@ -125,7 +125,9 @@ namespace traprecv {
                                         break;
 							    }
 							}
-						    if (serverityLevel != null && location != null && ipAddress != null && eventMessage != null)
+                            if (serverityLevel != null && location != null && eventMessage != null)
+                            {}
+						    if (serverityLevel != null && location != null && ipAddress != null && eventMessage != null && false)
 						    {
 						        if (!File.Exists(Environment.CurrentDirectory + "\\" + DateTime.Now.ToString("yy-MM-dd") + ".csv"))
 						        {
