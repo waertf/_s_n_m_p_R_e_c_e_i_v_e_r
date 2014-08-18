@@ -324,6 +324,10 @@ VALUES
               
           }
       });
+                                writeCurrentDeviceStatusThread.Start();
+                                writeToHistoryThread.Start();
+						        writeCurrentDeviceStatusThread.Join();
+						        writeToHistoryThread.Join();
 						    }
 						    if (serverityLevel != null && location != null && ipAddress != null && eventMessage != null && false)
 						    {
