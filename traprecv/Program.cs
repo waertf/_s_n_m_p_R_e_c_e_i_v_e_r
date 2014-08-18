@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -139,8 +140,56 @@ namespace traprecv {
                                 Thread writeCurrentStatusThread = new System.Threading.Thread
       (delegate()
       {
-          System.Console.Write("Hello, ");
-          System.Console.WriteLine("World!");
+          //update device
+          string DeviceNo = null;
+          string queryDeviceNo = @"SELECT
+public.device_info.device_no
+FROM
+public.device_info
+WHERE
+public.device_info.device_name = '"+location+"'";
+          try
+          {
+              using (DataTable dt = pgsqSqlClient.get_DataTable(queryDeviceNo))
+              {
+                  if (dt != null && dt.Rows.Count != 0)
+                  {
+                      foreach (DataRow row in dt.Rows)
+                      {
+                          DeviceNo = row[0].ToString(); 
+                      }
+                  }
+              }
+              if (DeviceNo != null)
+              {
+                  string checkIfDeviceNoExistInStatusTable = @"SELECT
+public.device_info.device_no
+FROM
+public.device_info
+WHERE
+public.device_info.device_no = " + DeviceNo;
+                  using (DataTable dt = pgsqSqlClient.get_DataTable(checkIfDeviceNoExistInStatusTable))
+                  {
+                      if (dt != null && dt.Rows.Count != 0)
+                      {
+                          //update
+                          string updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" WHERE device_no = " + DeviceNo;
+                          pgsqSqlClient.SqlScriptCmd(updateSqlScript);
+                      }
+                      else
+                      {
+                          //insert
+                          string insertSqlScript = @"INSERT INTO device_status_now VALUES ("+DeviceNo+@","+serverityLevel+")";
+                          pgsqSqlClient.SqlScriptCmd(insertSqlScript);
+                      }
+                  }
+              }
+          }
+          catch (Exception)
+          {
+
+              throw;
+          }
       });
                                 Thread writeToHistoryThread = new System.Threading.Thread
       (delegate()
