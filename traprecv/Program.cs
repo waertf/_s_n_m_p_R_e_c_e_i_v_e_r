@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -7,11 +8,19 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using CsvHelper;
 using SnmpSharpNet;
 using Gurock.SmartInspect;
 namespace traprecv {
 	class Program {
+        static SqlClient pgsqSqlClient = new SqlClient(
+                ConfigurationManager.AppSettings["SQL_SERVER_IP"],
+                ConfigurationManager.AppSettings["SQL_SERVER_PORT"],
+                ConfigurationManager.AppSettings["SQL_SERVER_USER_ID"],
+                ConfigurationManager.AppSettings["SQL_SERVER_PASSWORD"],
+                ConfigurationManager.AppSettings["SQL_SERVER_DATABASE"]
+                );
 		static void Main(string[] args) {
 		    
             SiAuto.Si.Enabled = true;
@@ -125,8 +134,21 @@ namespace traprecv {
                                         break;
 							    }
 							}
-                            if (serverityLevel != null && location != null && eventMessage != null)
-                            {}
+						    if (serverityLevel != null && location != null && eventMessage != null)
+						    {
+                                Thread writeCurrentStatusThread = new System.Threading.Thread
+      (delegate()
+      {
+          System.Console.Write("Hello, ");
+          System.Console.WriteLine("World!");
+      });
+                                Thread writeToHistoryThread = new System.Threading.Thread
+      (delegate()
+      {
+          System.Console.Write("Hello, ");
+          System.Console.WriteLine("World!");
+      });
+						    }
 						    if (serverityLevel != null && location != null && ipAddress != null && eventMessage != null && false)
 						    {
 						        if (!File.Exists(Environment.CurrentDirectory + "\\" + DateTime.Now.ToString("yy-MM-dd") + ".csv"))
