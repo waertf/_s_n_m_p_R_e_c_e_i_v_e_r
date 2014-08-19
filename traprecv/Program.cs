@@ -268,8 +268,12 @@ public.site_status_now_nbi.status_code > " + statusList[0];
                       {
                           if (dt != null && dt.Rows.Count != 0)
                           {
-                              string updateSiteIDStatus = @"UPDATE site_status_now_nbi SET status_code = " + statusList[0] + @" WHERE site_id=" + siteID;
-                              pgsqSqlClient.SqlScriptCmd(updateSiteIDStatus);
+                              string updateSiteIDStatus = @"UPDATE site_status_now_nbi SET status_code = " + statusList[0] + @" WHERE site_id=" + siteID+";";
+                              string updateLinkStatus=@"UPDATE link_status_now_nbi
+SET status_code = " + statusList[0] + @" 
+WHERE
+	bsite_id = "+siteID+";";
+                              pgsqSqlClient.SqlScriptCmd(updateSiteIDStatus+updateLinkStatus);
                           }
                           else
                           {

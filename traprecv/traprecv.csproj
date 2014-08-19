@@ -42,9 +42,8 @@
     <Reference Include="Gurock.SmartInspect">
       <HintPath>..\Gurock.SmartInspect.dll</HintPath>
     </Reference>
-    <Reference Include="SnmpSharpNet, Version=0.9.4.0, Culture=neutral, PublicKeyToken=b2181aa3b9571feb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\SnmpSharpNet.dll</HintPath>
+    <Reference Include="SnmpSharpNet">
+      <HintPath>..\..\..\..\Downloads\SnmpSharpNet-0-9-4-bin\SnmpSharpNet-bin-0-9-4\Release\SnmpSharpNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
