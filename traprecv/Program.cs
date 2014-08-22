@@ -173,9 +173,32 @@ public.device_info.device_no = " + DeviceNo;
                   {
                       if (dt != null && dt.Rows.Count != 0)
                       {
-                          //update
-                          string updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" WHERE device_no = " + DeviceNo;
-                          pgsqSqlClient.SqlScriptCmd(updateSqlScript);
+                          string queryDeviceStatusBySpecificDeviceNo = @"SELECT
+public.device_status_now.status_code
+FROM
+public.device_status_now
+WHERE
+public.device_status_now.device_no = " + DeviceNo;
+                          using (DataTable dt2 = pgsqSqlClient.get_DataTable(queryDeviceStatusBySpecificDeviceNo))
+                          {
+                              string stateResult = string.Empty;
+                              if (dt2 != null && dt2.Rows.Count != 0)
+                              {
+                                  stateResult = dt2.Rows[0].ItemArray[0]
+                                                  .ToString();
+                                  if (stateResult.Equals(serverityLevel))
+                                  {
+                                      //do nothing
+                                  }
+                                  else
+                                  {
+                                      //update
+                                      string updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" WHERE device_no = " + DeviceNo;
+                                      pgsqSqlClient.SqlScriptCmd(updateSqlScript);
+                                  }
+                              }
+                          }
+                          
                       }
                       else
                       {
