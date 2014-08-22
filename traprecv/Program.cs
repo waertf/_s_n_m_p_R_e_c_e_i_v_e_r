@@ -193,7 +193,7 @@ public.device_status_now.device_no = " + DeviceNo;
                                   else
                                   {
                                       //update
-                                      string updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" WHERE device_no = " + DeviceNo;
+                                      string updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" ,message = '"+eventMessage+@"' WHERE device_no = " + DeviceNo;
                                       pgsqSqlClient.SqlScriptCmd(updateSqlScript);
                                   }
                               }
@@ -203,7 +203,7 @@ public.device_status_now.device_no = " + DeviceNo;
                       else
                       {
                           //insert
-                          string insertSqlScript = @"INSERT INTO device_status_now VALUES ("+DeviceNo+@","+serverityLevel+")";
+                          string insertSqlScript = @"INSERT INTO device_status_now VALUES ("+DeviceNo+@","+serverityLevel+@",'"+eventMessage+"'"+")";
                           pgsqSqlClient.SqlScriptCmd(insertSqlScript);
                       }
                   }
