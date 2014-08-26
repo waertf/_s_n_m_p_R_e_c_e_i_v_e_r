@@ -95,6 +95,7 @@ namespace traprecv
         void pgscScript_Progress(object sender, Devart.Common.ScriptProgressEventArgs e)
         {
             Console.WriteLine(e.Text);
+            SiAuto.Main.LogText("SqlScript",e.Text);
             Console.WriteLine("  Successfully executed.");
         }
         public DataTable get_DataTable(string cmd)
@@ -136,6 +137,8 @@ namespace traprecv
                                 //IAsyncResult cres = command.BeginExecuteReader();
                                 //myReader = command.EndExecuteReader(cres);
                                 //lock (accessLock)
+                                SiAuto.Main.LogText("SqlQuery",cmd);
+                                Console.WriteLine(cmd);
                                 pgSqlConnection.Open();
                                 myReader = command.ExecuteReader();
                                 //stopWatch.Stop();
