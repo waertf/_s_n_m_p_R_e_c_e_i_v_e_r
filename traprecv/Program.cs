@@ -57,6 +57,7 @@ namespace traprecv {
 						// Parse SNMP Version 1 TRAP packet 
 						SnmpV1TrapPacket pkt = new SnmpV1TrapPacket();
 						pkt.decode(indata, inlen);
+                        /*
 						Console.WriteLine("** SNMP Version 1 TRAP received from {0}:", inep.ToString());
 						Console.WriteLine("*** Trap generic: {0}", pkt.Pdu.Generic);
 						Console.WriteLine("*** Trap specific: {0}", pkt.Pdu.Specific);
@@ -64,22 +65,24 @@ namespace traprecv {
 						Console.WriteLine("*** Timestamp: {0}", pkt.Pdu.TimeStamp.ToString());
 						Console.WriteLine("*** VarBind count: {0}", pkt.Pdu.VbList.Count);
 						Console.WriteLine("*** VarBind content:");
+                        
 						foreach (Vb v in pkt.Pdu.VbList) {
 							Console.WriteLine("**** {0} {1}: {2}", v.Oid.ToString(), SnmpConstants.GetTypeName(v.Value.Type), v.Value.ToString());
 						}
 						Console.WriteLine("** End of SNMP Version 1 TRAP data.");
+                         * */
 					} else {
 						// Parse SNMP Version 2 TRAP packet 
                         SnmpV3Packet pkt = SnmpV3Packet.DiscoveryRequest();
 						pkt.decode(indata, inlen);
-						Console.WriteLine("** SNMP Version 3 TRAP received from {0}:", inep.ToString());
+						//Console.WriteLine("** SNMP Version 3 TRAP received from {0}:", inep.ToString());
                         if (pkt.Version != SnmpVersion.Ver3)
                         {
 							Console.WriteLine("*** NOT an SNMPv3 trap ****");
 						} else {
 							//Console.WriteLine("*** Community: {0}", pkt.Community.ToString());
                             StringBuilder sb = new StringBuilder();
-
+                            /*
                             Console.WriteLine(pkt.GetType());
                             Console.WriteLine(pkt.USM);
                             Console.WriteLine(pkt.USM.AuthenticationSecret);
@@ -93,10 +96,10 @@ namespace traprecv {
                             Console.WriteLine("trapObjectID.0 : {0}", pkt.Pdu.TrapObjectID.ToString());
 							Console.WriteLine("*** VarBind count: {0}", pkt.Pdu.VbList.Count);
 							Console.WriteLine("*** VarBind content:");
+                            */
 						    string serverityLevel = null, ipAddress = null, eventMessage = null,location=null;
 							foreach (Vb v in pkt.Pdu.VbList) {
-								Console.WriteLine("**** {0} {1}: {2}", 
-								   v.Oid.ToString(), SnmpConstants.GetTypeName(v.Value.Type), v.Value.ToString());
+								//Console.WriteLine("**** {0} {1}: {2}", v.Oid.ToString(), SnmpConstants.GetTypeName(v.Value.Type),v.Value.ToString());
                                 sb.Append(v.Oid.ToString()).Append(" = ").Append(v.Value.ToString()).AppendLine();
 							    switch (v.Oid.ToString())
 							    {
@@ -116,13 +119,13 @@ namespace traprecv {
                                             Match m = r.Match(ip);
                                             if (m.Success)
                                             {
-                                                Console.WriteLine(m.Value + " valid");
+                                                //Console.WriteLine(m.Value + " valid");
                                                 ipAddress = m.Value;
                                                 ipAddress = ip;
                                             }
                                             else
                                             {
-                                                Console.WriteLine("invalid");
+                                                //Console.WriteLine("invalid");
                                             }
 							            }
 							            catch (Exception)
