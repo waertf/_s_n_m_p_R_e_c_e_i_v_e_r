@@ -11,3 +11,5 @@
 /traprecv.vshost.exe.manifest
 /log-2014-07-02-01-29-24.sil
 *.sil
+/Devart.Data.dll
+/Devart.Data.xml
