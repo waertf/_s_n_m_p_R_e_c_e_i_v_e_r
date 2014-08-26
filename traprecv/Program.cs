@@ -57,7 +57,7 @@ namespace traprecv {
 						// Parse SNMP Version 1 TRAP packet 
 						SnmpV1TrapPacket pkt = new SnmpV1TrapPacket();
 						pkt.decode(indata, inlen);
-                        /*
+                        
 						Console.WriteLine("** SNMP Version 1 TRAP received from {0}:", inep.ToString());
 						Console.WriteLine("*** Trap generic: {0}", pkt.Pdu.Generic);
 						Console.WriteLine("*** Trap specific: {0}", pkt.Pdu.Specific);
@@ -70,7 +70,7 @@ namespace traprecv {
 							Console.WriteLine("**** {0} {1}: {2}", v.Oid.ToString(), SnmpConstants.GetTypeName(v.Value.Type), v.Value.ToString());
 						}
 						Console.WriteLine("** End of SNMP Version 1 TRAP data.");
-                         * */
+                         
 					} else {
 						// Parse SNMP Version 2 TRAP packet 
                         SnmpV3Packet pkt = SnmpV3Packet.DiscoveryRequest();
@@ -139,8 +139,14 @@ namespace traprecv {
                                         break;
 							    }
 							}
+                            Console.WriteLine("serverityLevel:" + serverityLevel +
+                                    Environment.NewLine + "location:" + location + Environment.NewLine +
+                                    "eventMessage:" + eventMessage);
 						    if (serverityLevel != null && location != null && eventMessage != null)
 						    {
+                                SiAuto.Main.AddCheckpoint("+if", "serverityLevel:" + serverityLevel+
+                                    Environment.NewLine + "location:" + location+Environment.NewLine+
+                                    "eventMessage:" + eventMessage);
                                 Thread writeCurrentDeviceStatusThread = new System.Threading.Thread
       (delegate()
       {
@@ -385,7 +391,8 @@ VALUES
 
                                 }
 						    }
-                            SiAuto.Main.LogStringBuilder("receive trp",sb);
+                            //SiAuto.Main.LogStringBuilder("receive trp",sb);
+                            Console.WriteLine("receive trp:"+Environment.NewLine+sb.ToString());
 							Console.WriteLine("** End of SNMP Version 3 TRAP data.");
                             
 						}
