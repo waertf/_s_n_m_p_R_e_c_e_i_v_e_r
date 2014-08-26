@@ -39,7 +39,7 @@ namespace snmpV3Sender
             byte[] outBuffer = packet.encode();
             // Send it to the manager
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            socket.SendTo(outBuffer, new IPEndPoint(IPAddress.Parse("192.168.1.255"), 162));
+            socket.SendTo(outBuffer, new IPEndPoint(IPAddress.Parse("10.6.3.30"), 162));
         }
     }
 }
