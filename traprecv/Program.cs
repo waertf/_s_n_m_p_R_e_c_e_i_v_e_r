@@ -173,11 +173,11 @@ public.device_info.device_name = '"+location+"'";
               if (DeviceNo != null)
               {
                   string checkIfDeviceNoExistInStatusTable = @"SELECT
-public.device_info.device_no
+public.device_status_now.device_no
 FROM
-public.device_info
+public.device_status_now
 WHERE
-public.device_info.device_no = " + DeviceNo;
+public.device_status_now.device_no = " + DeviceNo;
                   using (DataTable dt = pgsqSqlClient.get_DataTable(checkIfDeviceNoExistInStatusTable))
                   {
                       if (dt != null && dt.Rows.Count != 0)
