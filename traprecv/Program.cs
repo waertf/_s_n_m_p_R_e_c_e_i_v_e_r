@@ -32,6 +32,7 @@ namespace traprecv {
                 ConfigurationManager.AppSettings["SMS_SERVER_DATABASE"]);
         private static readonly string m_sender = "拓樸系統管理者";
         static ConcurrentQueue<string> smsQueue = new ConcurrentQueue<string>(); 
+        static StringBuilder smsSB = new StringBuilder("test");
 		static void Main(string[] args) {
 		    
             SiAuto.Si.Enabled = true;
@@ -174,231 +175,241 @@ namespace traprecv {
                             Console.WriteLine("serverityLevel:" + serverityLevel +
                                     Environment.NewLine + "location:" + location + Environment.NewLine +
                                     "eventMessage:" + eventMessage);
-						    if (serverityLevel != null && location != null && eventMessage != null)
+						    if (smsSB.ToString().Equals(location + serverityLevel))
 						    {
-                                SiAuto.Main.AddCheckpoint("+if", "serverityLevel:" + serverityLevel+
-                                    Environment.NewLine + "location:" + location+Environment.NewLine+
-                                    "eventMessage:" + eventMessage);
-                                smsQueue.Enqueue(location+"&"+serverityLevel);
-                                Thread writeCurrentDeviceStatusThread = new System.Threading.Thread
-      (delegate()
-      {
-          //update device
-          string DeviceNo = null;
-          string queryDeviceNo = @"SELECT
+						        //do nothing
+						    }
+						    else
+						    {
+                                if (serverityLevel != null && location != null && eventMessage != null)
+                                {
+                                    smsSB.Clear();
+                                    smsSB.Insert(0, location + serverityLevel);
+                                    SiAuto.Main.AddCheckpoint("+if", "serverityLevel:" + serverityLevel +
+                                        Environment.NewLine + "location:" + location + Environment.NewLine +
+                                        "eventMessage:" + eventMessage);
+                                    smsQueue.Enqueue(location + "&" + serverityLevel);
+                                    Thread writeCurrentDeviceStatusThread = new System.Threading.Thread
+          (delegate()
+          {
+              //update device
+              string DeviceNo = null;
+              string queryDeviceNo = @"SELECT
 public.device_info.device_no
 FROM
 public.device_info
 WHERE
-public.device_info.device_name = '"+location+"'";
-          try
-          {
-              using (DataTable dt = pgsqSqlClient.get_DataTable(queryDeviceNo))
+public.device_info.device_name = '" + location + "'";
+              try
               {
-                  if (dt != null && dt.Rows.Count != 0)
-                  {
-                      foreach (DataRow row in dt.Rows)
-                      {
-                          DeviceNo = row[0].ToString(); 
-                      }
-                  }
-              }
-              if (DeviceNo != null)
-              {
-                  string checkIfDeviceNoExistInStatusTable = @"SELECT
-public.device_status_now.device_no
-FROM
-public.device_status_now
-WHERE
-public.device_status_now.device_no = " + DeviceNo;
-                  using (DataTable dt = pgsqSqlClient.get_DataTable(checkIfDeviceNoExistInStatusTable))
-                  {
-                      if (dt != null && dt.Rows.Count != 0)
-                      {
-                          string queryDeviceStatusBySpecificDeviceNo = @"SELECT
-public.device_status_now.status_code
-FROM
-public.device_status_now
-WHERE
-public.device_status_now.device_no = " + DeviceNo;
-                          using (DataTable dt2 = pgsqSqlClient.get_DataTable(queryDeviceStatusBySpecificDeviceNo))
-                          {
-                              string stateResult = string.Empty;
-                              if (dt2 != null && dt2.Rows.Count != 0)
-                              {
-                                  stateResult = dt2.Rows[0].ItemArray[0]
-                                                  .ToString();
-                                  if (stateResult.Equals(serverityLevel))
-                                  {
-                                      //do nothing
-                                  }
-                                  else
-                                  {
-                                      //update
-                                      string updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" ,message = '"+eventMessage+@"' WHERE device_no = " + DeviceNo;
-                                      pgsqSqlClient.SqlScriptCmd(updateSqlScript);
-                                  }
-                              }
-                          }
-                          
-                      }
-                      else
-                      {
-                          //insert
-                          string insertSqlScript = @"INSERT INTO device_status_now VALUES ("+DeviceNo+@","+serverityLevel+@",'"+eventMessage+"'"+")";
-                          pgsqSqlClient.SqlScriptCmd(insertSqlScript);
-                      }
-                  }
-                  string querySiteID = @"SELECT
-public.device_info.site_id
-FROM
-public.device_info
-WHERE
-public.device_info.device_no ="+DeviceNo;
-                  string siteID = null;
-                  using (DataTable dt = pgsqSqlClient.get_DataTable(querySiteID))
+                  using (DataTable dt = pgsqSqlClient.get_DataTable(queryDeviceNo))
                   {
                       if (dt != null && dt.Rows.Count != 0)
                       {
                           foreach (DataRow row in dt.Rows)
                           {
-                              siteID = row[0].ToString();
+                              DeviceNo = row[0].ToString();
                           }
                       }
                   }
-                  if (siteID != null)
+                  if (DeviceNo != null)
                   {
-                      string queryDeviceList = @"SELECT device_no
+                      string checkIfDeviceNoExistInStatusTable = @"SELECT
+public.device_status_now.device_no
 FROM
-device_info
+public.device_status_now
 WHERE
-site_id=" + siteID;
-                      List<int> deviceList = new List<int>();
-                      using (DataTable dt = pgsqSqlClient.get_DataTable(queryDeviceList))
+public.device_status_now.device_no = " + DeviceNo;
+                      using (DataTable dt = pgsqSqlClient.get_DataTable(checkIfDeviceNoExistInStatusTable))
+                      {
+                          if (dt != null && dt.Rows.Count != 0)
+                          {
+                              string queryDeviceStatusBySpecificDeviceNo = @"SELECT
+public.device_status_now.status_code
+FROM
+public.device_status_now
+WHERE
+public.device_status_now.device_no = " + DeviceNo;
+                              using (DataTable dt2 = pgsqSqlClient.get_DataTable(queryDeviceStatusBySpecificDeviceNo))
+                              {
+                                  string stateResult = string.Empty;
+                                  if (dt2 != null && dt2.Rows.Count != 0)
+                                  {
+                                      stateResult = dt2.Rows[0].ItemArray[0]
+                                                      .ToString();
+                                      if (stateResult.Equals(serverityLevel))
+                                      {
+                                          //do nothing
+                                      }
+                                      else
+                                      {
+                                          //update
+                                          string updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" ,message = '" + eventMessage + @"' WHERE device_no = " + DeviceNo;
+                                          pgsqSqlClient.SqlScriptCmd(updateSqlScript);
+                                      }
+                                  }
+                              }
+
+                          }
+                          else
+                          {
+                              //insert
+                              string insertSqlScript = @"INSERT INTO device_status_now VALUES (" + DeviceNo + @"," + serverityLevel + @",'" + eventMessage + "'" + ")";
+                              pgsqSqlClient.SqlScriptCmd(insertSqlScript);
+                          }
+                      }
+                      string querySiteID = @"SELECT
+public.device_info.site_id
+FROM
+public.device_info
+WHERE
+public.device_info.device_no =" + DeviceNo;
+                      string siteID = null;
+                      using (DataTable dt = pgsqSqlClient.get_DataTable(querySiteID))
                       {
                           if (dt != null && dt.Rows.Count != 0)
                           {
                               foreach (DataRow row in dt.Rows)
                               {
-                                  deviceList.Add(int.Parse(row[0].ToString()));
+                                  siteID = row[0].ToString();
                               }
                           }
                       }
-                      List<int> statusList = new List<int>();
-                      string queryDeviceStatus = @"SELECT
-public.device_status_now.status_code
-FROM
-public.device_status_now
-WHERE
-public.device_status_now.device_no = ";
-                      for (int i = 0; i < deviceList.Count; i++)
+                      if (siteID != null)
                       {
-                          using (DataTable dt = pgsqSqlClient.get_DataTable(queryDeviceStatus+deviceList[i]))
+                          string queryDeviceList = @"SELECT device_no
+FROM
+device_info
+WHERE
+site_id=" + siteID;
+                          List<int> deviceList = new List<int>();
+                          using (DataTable dt = pgsqSqlClient.get_DataTable(queryDeviceList))
                           {
                               if (dt != null && dt.Rows.Count != 0)
                               {
                                   foreach (DataRow row in dt.Rows)
                                   {
-                                      statusList.Add(int.Parse(row[0].ToString()));
+                                      deviceList.Add(int.Parse(row[0].ToString()));
                                   }
                               }
                           }
-                      }
-                      statusList.Sort();
-                      string checkIfSiteIDExist = @"SELECT
+                          List<int> statusList = new List<int>();
+                          string queryDeviceStatus = @"SELECT
+public.device_status_now.status_code
+FROM
+public.device_status_now
+WHERE
+public.device_status_now.device_no = ";
+                          for (int i = 0; i < deviceList.Count; i++)
+                          {
+                              using (DataTable dt = pgsqSqlClient.get_DataTable(queryDeviceStatus + deviceList[i]))
+                              {
+                                  if (dt != null && dt.Rows.Count != 0)
+                                  {
+                                      foreach (DataRow row in dt.Rows)
+                                      {
+                                          statusList.Add(int.Parse(row[0].ToString()));
+                                      }
+                                  }
+                              }
+                          }
+                          statusList.Sort();
+                          string checkIfSiteIDExist = @"SELECT
 public.site_status_now_nbi.site_id
 FROM
 public.site_status_now_nbi
 WHERE
 public.site_status_now_nbi.site_id = " + siteID;
-                      using (DataTable dt = pgsqSqlClient.get_DataTable(checkIfSiteIDExist))
-                      {
-                          if (dt != null && dt.Rows.Count != 0)
+                          using (DataTable dt = pgsqSqlClient.get_DataTable(checkIfSiteIDExist))
                           {
+                              if (dt != null && dt.Rows.Count != 0)
+                              {
+                              }
+                              else
+                              {
+                                  string insertSiteID = @"INSERT INTO site_status_now_nbi VALUES(" + siteID + @",100)";
+                                  pgsqSqlClient.SqlScriptCmd(insertSiteID);
+                              }
                           }
-                          else
-                          {
-                              string insertSiteID = @"INSERT INTO site_status_now_nbi VALUES("+siteID+@",100)";
-                              pgsqSqlClient.SqlScriptCmd(insertSiteID);
-                          }
-                      }
-                      string getWorstStatus = @"SELECT
+                          string getWorstStatus = @"SELECT
 public.site_status_now_nbi.status_code
 FROM
 public.site_status_now_nbi
 WHERE
-public.site_status_now_nbi.site_id = "+siteID+@" AND
+public.site_status_now_nbi.site_id = " + siteID + @" AND
 public.site_status_now_nbi.status_code > " + statusList[0];
-                      using (DataTable dt = pgsqSqlClient.get_DataTable(getWorstStatus))
-                      {
-                          if (dt != null && dt.Rows.Count != 0)
+                          using (DataTable dt = pgsqSqlClient.get_DataTable(getWorstStatus))
                           {
-                              string updateSiteIDStatus = @"UPDATE site_status_now_nbi SET status_code = " + statusList[0] + @" WHERE site_id=" + siteID+";";
-                              string updateLinkStatus=@"UPDATE link_status_now_nbi
+                              if (dt != null && dt.Rows.Count != 0)
+                              {
+                                  string updateSiteIDStatus = @"UPDATE site_status_now_nbi SET status_code = " + statusList[0] + @" WHERE site_id=" + siteID + ";";
+                                  string updateLinkStatus = @"UPDATE link_status_now_nbi
 SET status_code = " + statusList[0] + @" 
 WHERE
-	bsite_id = "+siteID+";";
-                              pgsqSqlClient.SqlScriptCmd(updateSiteIDStatus+updateLinkStatus);
-                          }
-                          else
-                          {
-                              
+	bsite_id = " + siteID + ";";
+                                  pgsqSqlClient.SqlScriptCmd(updateSiteIDStatus + updateLinkStatus);
+                              }
+                              else
+                              {
+
+                              }
                           }
                       }
                   }
               }
-          }
-          catch (Exception e)
-          {
+              catch (Exception e)
+              {
 
-              Console.WriteLine(e.ToString());
-              SiAuto.Main.LogException(e);
-          }
-      });
-                                Thread writeToHistoryThread = new System.Threading.Thread
-      (delegate()
-      {
-          string DeviceNo = null;
-          string queryDeviceNo = @"SELECT
+                  Console.WriteLine(e.ToString());
+                  SiAuto.Main.LogException(e);
+              }
+          });
+                                    Thread writeToHistoryThread = new System.Threading.Thread
+          (delegate()
+          {
+              string DeviceNo = null;
+              string queryDeviceNo = @"SELECT
 public.device_info.device_no
 FROM
 public.device_info
 WHERE
-public.device_info.device_name = '"+location+"'";
-          try
-          {
-              using (DataTable dt = pgsqSqlClient.get_DataTable(queryDeviceNo))
+public.device_info.device_name = '" + location + "'";
+              try
               {
-                  if (dt != null && dt.Rows.Count != 0)
+                  using (DataTable dt = pgsqSqlClient.get_DataTable(queryDeviceNo))
                   {
-                      foreach (DataRow row in dt.Rows)
+                      if (dt != null && dt.Rows.Count != 0)
                       {
-                          DeviceNo = row[0].ToString();
+                          foreach (DataRow row in dt.Rows)
+                          {
+                              DeviceNo = row[0].ToString();
+                          }
                       }
                   }
-              }
-              if (DeviceNo != null)
-              {
-                  string insertSqlScript = @"INSERT INTO device_status_history_nbi (
+                  if (DeviceNo != null)
+                  {
+                      string insertSqlScript = @"INSERT INTO device_status_history_nbi (
 	device_no,
 	alarm_status,
 	message_note
 )
 VALUES
-	("+DeviceNo+@", "+serverityLevel+@", '"+eventMessage+"')";
-                  pgsqSqlClient.SqlScriptCmd(insertSqlScript);
+	(" + DeviceNo + @", " + serverityLevel + @", '" + eventMessage + "')";
+                      pgsqSqlClient.SqlScriptCmd(insertSqlScript);
+                  }
               }
-          }
-          catch (Exception e)
-          {
-              
-          }
-      });
-                                writeCurrentDeviceStatusThread.Start();
-                                writeToHistoryThread.Start();
-						        writeCurrentDeviceStatusThread.Join();
-						        writeToHistoryThread.Join();
+              catch (Exception e)
+              {
+
+              }
+          });
+                                    writeCurrentDeviceStatusThread.Start();
+                                    writeToHistoryThread.Start();
+                                    writeCurrentDeviceStatusThread.Join();
+                                    writeToHistoryThread.Join();
+                                }
 						    }
+						    
 						    if (serverityLevel != null && location != null && ipAddress != null && eventMessage != null && false)
 						    {
 						        if (!File.Exists(Environment.CurrentDirectory + "\\" + DateTime.Now.ToString("yy-MM-dd") + ".csv"))
