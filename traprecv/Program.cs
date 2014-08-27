@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -23,6 +24,14 @@ namespace traprecv {
                 ConfigurationManager.AppSettings["SQL_SERVER_PASSWORD"],
                 ConfigurationManager.AppSettings["SQL_SERVER_DATABASE"]
                 );
+        static SqlClient smsSqlClient = new SqlClient(
+            ConfigurationManager.AppSettings["SMS_SERVER_IP"],
+                ConfigurationManager.AppSettings["SMS_SERVER_PORT"],
+                ConfigurationManager.AppSettings["SMS_SERVER_USER_ID"],
+                ConfigurationManager.AppSettings["SMS_SERVER_PASSWORD"],
+                ConfigurationManager.AppSettings["SMS_SERVER_DATABASE"]);
+        private static readonly string m_sender = "拓樸系統管理者";
+        static ConcurrentQueue<string> smsQueue = new ConcurrentQueue<string>(); 
 		static void Main(string[] args) {
 		    
             SiAuto.Si.Enabled = true;
@@ -36,7 +45,30 @@ namespace traprecv {
 			socket.Bind(ep);
 			// Disable timeout processing. Just block until packet is received 
 			socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReceiveTimeout, 0);
-			bool run = true;
+            #region sms
+            var smsSendTimer = new System.Timers.Timer(5);
+            smsSendTimer.Elapsed += (sender, e) =>
+            {
+                string result = null;
+                string deviceName = null;
+                string stateId = null;
+                //ThreadPool.QueueUserWorkItem(delegate
+                //{
+                if (smsQueue.TryDequeue(out result))
+                {
+                    string[] getStrings = result.Split(new char[] { '&' });
+                    if (getStrings.Length.Equals(2))
+                    {
+                        deviceName = getStrings[0];
+                        stateId = getStrings[1];
+                        SendStatusSMS(deviceName, stateId);
+                    }
+                }
+                //});
+            };
+            smsSendTimer.Enabled = true;
+            #endregion sms
+            bool run = true;
 			while (run) {
 				byte[] indata = new byte[16 * 1024];
 				// 16KB receive buffer 
@@ -147,6 +179,7 @@ namespace traprecv {
                                 SiAuto.Main.AddCheckpoint("+if", "serverityLevel:" + serverityLevel+
                                     Environment.NewLine + "location:" + location+Environment.NewLine+
                                     "eventMessage:" + eventMessage);
+                                smsQueue.Enqueue(location+"&"+serverityLevel);
                                 Thread writeCurrentDeviceStatusThread = new System.Threading.Thread
       (delegate()
       {
@@ -428,6 +461,91 @@ VALUES
             DateTime dt = new DateTime(year, month, day, hour, min, sec);
             //Console.WriteLine(dt);
 	        return dt;
+        }
+
+        static void SendStatusSMS(string deviceName, string deviceStateId)
+        {
+            string queryPhoneNumber = @"SELECT
+public.msg_nbi_send.phone_number
+FROM
+public.msg_nbi_send
+WHERE
+public.msg_nbi_send.message_no = " + deviceStateId;
+            string queryStateChineseDescription = @"SELECT
+public.alarm_set_nbi.cnote
+FROM
+public.alarm_set_nbi
+WHERE
+public.alarm_set_nbi.serial_no = " + deviceStateId;
+            string stateChineseDescription = null;
+            string phoneNumber = null;
+            StringBuilder smsInsertSqlScriptBuilder = new StringBuilder();
+            StringBuilder smsHistoryBuilder = new StringBuilder();
+            try
+            {
+                using (DataTable dt = pgsqSqlClient.get_DataTable(queryStateChineseDescription))
+                {
+                    if (dt != null && dt.Rows.Count != 0)
+                    {
+                        stateChineseDescription = dt.Rows[0].ItemArray[0].ToString();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            try
+            {
+                using (DataTable dt = pgsqSqlClient.get_DataTable(queryPhoneNumber))
+                {
+                    if (dt != null && dt.Rows.Count != 0)
+                    {
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            phoneNumber = row[0].ToString();
+                            Console.WriteLine(phoneNumber + ":" + deviceName + ":" + stateChineseDescription);
+                            //send sms 
+                            SiAuto.Main.LogText("send sms", phoneNumber + ":" + deviceName + ":" + stateChineseDescription);
+                            string insertSqlScript = @"INSERT INTO t_sendsms (
+	m_sender,
+	m_recver,
+	m_recvtime,
+	m_content,
+	m_phoneno,
+	m_status
+)
+VALUES
+	(
+		'" + m_sender + @"',
+		'" + phoneNumber + @"',
+		'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + @"',
+		'" + m_sender + @"(NBI)" + deviceName + ":" + stateChineseDescription + @"',
+		1,
+		0
+	);";
+                            string smsHistory = @"INSERT INTO ams_history (phone_number,message_note) VALUES ('" + phoneNumber + @"','" + deviceStateId + @"');";
+                            smsInsertSqlScriptBuilder.AppendLine(insertSqlScript);
+                            smsHistoryBuilder.AppendLine(smsHistory);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            if (!smsInsertSqlScriptBuilder.Length.Equals(0))
+            {
+                smsSqlClient.SqlScriptCmd(smsInsertSqlScriptBuilder.ToString());
+            }
+            if (!smsHistoryBuilder.Length.Equals(0))
+            {
+                pgsqSqlClient.SqlScriptCmd(smsHistoryBuilder.ToString());
+            }
         }
 	}
 }
