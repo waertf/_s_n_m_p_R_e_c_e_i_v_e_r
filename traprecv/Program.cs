@@ -266,7 +266,7 @@ public.device_status_now.device_no = ";
                               {
                                   foreach (DataRow row in dt.Rows)
                                   {
-                                      statusList.Add((int)row[0]);
+                                      statusList.Add(int.Parse(row[0].ToString()));
                                   }
                               }
                           }
