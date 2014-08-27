@@ -183,12 +183,7 @@ namespace traprecv {
 						    {
                                 if (serverityLevel != null && location != null && eventMessage != null)
                                 {
-                                    smsSB.Clear();
-                                    smsSB.Insert(0, location + serverityLevel);
-                                    SiAuto.Main.AddCheckpoint("+if", "serverityLevel:" + serverityLevel +
-                                        Environment.NewLine + "location:" + location + Environment.NewLine +
-                                        "eventMessage:" + eventMessage);
-                                    smsQueue.Enqueue(location + "&" + serverityLevel);
+                                    
                                     Thread writeCurrentDeviceStatusThread = new System.Threading.Thread
           (delegate()
           {
@@ -246,6 +241,18 @@ public.device_status_now.device_no = " + DeviceNo;
                                           //update
                                           string updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" ,message = '" + eventMessage + @"' WHERE device_no = " + DeviceNo;
                                           pgsqSqlClient.SqlScriptCmd(updateSqlScript);
+                                          //send sms
+                                          if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
+                                          {
+                                              SiAuto.Main.LogMessage(smsSB.ToString());
+                                              smsSB.Clear();
+                                              SiAuto.Main.LogMessage("location + serverityLevel=" + location + serverityLevel);
+                                              smsSB.Insert(0, location + serverityLevel);
+                                              SiAuto.Main.AddCheckpoint("+if", "serverityLevel:" + serverityLevel +
+                                                  Environment.NewLine + "location:" + location + Environment.NewLine +
+                                                  "eventMessage:" + eventMessage);
+                                              smsQueue.Enqueue(location + "&" + serverityLevel);
+                                          }
                                       }
                                   }
                               }
@@ -490,8 +497,8 @@ WHERE
 public.alarm_set_nbi.serial_no = " + deviceStateId;
             string stateChineseDescription = null;
             string phoneNumber = null;
-            StringBuilder smsInsertSqlScriptBuilder = new StringBuilder();
-            StringBuilder smsHistoryBuilder = new StringBuilder();
+            StringBuilder smsInsertSqlScriptBuilder = new StringBuilder(0);
+            StringBuilder smsHistoryBuilder = new StringBuilder(0);
             try
             {
                 using (DataTable dt = pgsqSqlClient.get_DataTable(queryStateChineseDescription))
@@ -507,7 +514,7 @@ public.alarm_set_nbi.serial_no = " + deviceStateId;
 
                 throw;
             }
-
+            if (stateChineseDescription!=null)
             try
             {
                 using (DataTable dt = pgsqSqlClient.get_DataTable(queryPhoneNumber))
@@ -535,7 +542,7 @@ VALUES
 		'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + @"',
 		'" + m_sender + @"(NBI)" + deviceName + ":" + stateChineseDescription + @"',
 		1,
-		0
+		1
 	);";
                             string smsHistory = @"INSERT INTO ams_history (phone_number,message_note) VALUES ('" + phoneNumber + @"','" + deviceStateId + @"');";
                             smsInsertSqlScriptBuilder.AppendLine(insertSqlScript);
