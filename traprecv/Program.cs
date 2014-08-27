@@ -247,7 +247,7 @@ site_id=" + siteID;
                           {
                               foreach (DataRow row in dt.Rows)
                               {
-                                  deviceList.Add((int)row[0]);
+                                  deviceList.Add(int.Parse(row[0].ToString()));
                               }
                           }
                       }
@@ -315,10 +315,11 @@ WHERE
                   }
               }
           }
-          catch (Exception)
+          catch (Exception e)
           {
 
-              throw;
+              Console.WriteLine(e.ToString());
+              SiAuto.Main.LogException(e);
           }
       });
                                 Thread writeToHistoryThread = new System.Threading.Thread
@@ -351,7 +352,7 @@ public.device_info.device_name = '"+location+"'";
 	message_note
 )
 VALUES
-	("+DeviceNo+@", "+serverityLevel+@", "+eventMessage+")";
+	("+DeviceNo+@", "+serverityLevel+@", '"+eventMessage+"')";
                   pgsqSqlClient.SqlScriptCmd(insertSqlScript);
               }
           }
