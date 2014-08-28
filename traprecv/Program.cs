@@ -175,7 +175,7 @@ namespace traprecv {
                             Console.WriteLine("serverityLevel:" + serverityLevel +
                                     Environment.NewLine + "location:" + location + Environment.NewLine +
                                     "eventMessage:" + eventMessage);
-						    if (smsSB.ToString().Equals(location + serverityLevel))
+						    if (smsSB.ToString().Equals(location + "&" +serverityLevel))
 						    {
 						        //do nothing
 						    }
@@ -244,13 +244,10 @@ public.device_status_now.device_no = " + DeviceNo;
                                           //send sms
                                           //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
                                           {
-                                              SiAuto.Main.LogMessage(smsSB.ToString());
+                                              SiAuto.Main.AddCheckpoint("location & serverityLevel", smsSB.ToString());
                                               smsSB.Clear();
-                                              SiAuto.Main.LogMessage("location + serverityLevel=" + location + serverityLevel);
-                                              smsSB.Insert(0, location + serverityLevel);
-                                              SiAuto.Main.AddCheckpoint("+if", "serverityLevel:" + serverityLevel +
-                                                  Environment.NewLine + "location:" + location + Environment.NewLine +
-                                                  "eventMessage:" + eventMessage);
+                                              smsSB.Insert(0, location + "&" + serverityLevel);
+                                              SiAuto.Main.AddCheckpoint("location-serverityLevel-eventMessage", "location:" + location +Environment.NewLine +"serverityLevel:" + serverityLevel + Environment.NewLine +"eventMessage:" + eventMessage);
                                               smsQueue.Enqueue(location + "&" + serverityLevel);
                                           }
                                       }
@@ -266,13 +263,10 @@ public.device_status_now.device_no = " + DeviceNo;
                               //send sms
                               //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
                               {
-                                  SiAuto.Main.LogMessage(smsSB.ToString());
+                                  SiAuto.Main.AddCheckpoint("location & serverityLevel", smsSB.ToString());
                                   smsSB.Clear();
-                                  SiAuto.Main.LogMessage("location + serverityLevel=" + location + serverityLevel);
-                                  smsSB.Insert(0, location + serverityLevel);
-                                  SiAuto.Main.AddCheckpoint("+if", "serverityLevel:" + serverityLevel +
-                                      Environment.NewLine + "location:" + location + Environment.NewLine +
-                                      "eventMessage:" + eventMessage);
+                                  smsSB.Insert(0, location + "&" + serverityLevel);
+                                  SiAuto.Main.AddCheckpoint("location-serverityLevel-eventMessage", "location:" + location + Environment.NewLine + "serverityLevel:" + serverityLevel + Environment.NewLine + "eventMessage:" + eventMessage);
                                   smsQueue.Enqueue(location + "&" + serverityLevel);
                               }
                           }
