@@ -350,8 +350,7 @@ public.site_status_now_nbi.status_code
 FROM
 public.site_status_now_nbi
 WHERE
-public.site_status_now_nbi.site_id = " + siteID + @" AND
-public.site_status_now_nbi.status_code > " + statusList[0];
+public.site_status_now_nbi.site_id = " + siteID ;
                           using (DataTable dt = pgsqSqlClient.get_DataTable(getWorstStatus))
                           {
                               if (dt != null && dt.Rows.Count != 0)
