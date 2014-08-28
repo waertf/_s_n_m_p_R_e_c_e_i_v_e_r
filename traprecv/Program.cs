@@ -87,7 +87,8 @@ namespace traprecv {
 					// Check protocol version int 
 					int ver = SnmpPacket.GetProtocolVersion(indata, inlen);
 					if (ver == (int)SnmpVersion.Ver1) {
-						// Parse SNMP Version 1 TRAP packet 
+						// Parse SNMP Version 1 TRAP packet
+                        /*
 						SnmpV1TrapPacket pkt = new SnmpV1TrapPacket();
 						pkt.decode(indata, inlen);
                         
@@ -103,7 +104,7 @@ namespace traprecv {
 							Console.WriteLine("**** {0} {1}: {2}", v.Oid.ToString(), SnmpConstants.GetTypeName(v.Value.Type), v.Value.ToString());
 						}
 						Console.WriteLine("** End of SNMP Version 1 TRAP data.");
-                         
+                     */    
 					} else {
 						// Parse SNMP Version 2 TRAP packet 
                         SnmpV3Packet pkt = SnmpV3Packet.DiscoveryRequest();
