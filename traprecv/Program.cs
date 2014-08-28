@@ -451,8 +451,8 @@ VALUES
                                 }
 						    }
                             //SiAuto.Main.LogStringBuilder("receive trp",sb);
-                            Console.WriteLine("receive trp:"+Environment.NewLine+sb.ToString());
-							Console.WriteLine("** End of SNMP Version 3 TRAP data.");
+                            //Console.WriteLine("receive trp:"+Environment.NewLine+sb.ToString());
+							//Console.WriteLine("** End of SNMP Version 3 TRAP data.");
                             
 						}
 					}
