@@ -240,7 +240,7 @@ public.device_status_now.device_no = " + DeviceNo;
                                       else
                                       {
                                           //update
-                                          string updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" ,message = '" + eventMessage + @"' WHERE device_no = " + DeviceNo;
+                                          string updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" ,message = $$" + eventMessage + @"$$ WHERE device_no = " + DeviceNo;
                                           pgsqSqlClient.SqlScriptCmd(updateSqlScript);
                                           //send sms
                                           //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
@@ -259,7 +259,7 @@ public.device_status_now.device_no = " + DeviceNo;
                           else
                           {
                               //insert
-                              string insertSqlScript = @"INSERT INTO device_status_now VALUES (" + DeviceNo + @"," + serverityLevel + @",'" + eventMessage + "'" + ")";
+                              string insertSqlScript = @"INSERT INTO device_status_now VALUES (" + DeviceNo + @"," + serverityLevel + @",$$" + eventMessage + "$$" + ")";
                               pgsqSqlClient.SqlScriptCmd(insertSqlScript);
                               //send sms
                               //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
