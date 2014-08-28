@@ -242,7 +242,7 @@ public.device_status_now.device_no = " + DeviceNo;
                                           string updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" ,message = '" + eventMessage + @"' WHERE device_no = " + DeviceNo;
                                           pgsqSqlClient.SqlScriptCmd(updateSqlScript);
                                           //send sms
-                                          if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
+                                          //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
                                           {
                                               SiAuto.Main.LogMessage(smsSB.ToString());
                                               smsSB.Clear();
@@ -263,6 +263,18 @@ public.device_status_now.device_no = " + DeviceNo;
                               //insert
                               string insertSqlScript = @"INSERT INTO device_status_now VALUES (" + DeviceNo + @"," + serverityLevel + @",'" + eventMessage + "'" + ")";
                               pgsqSqlClient.SqlScriptCmd(insertSqlScript);
+                              //send sms
+                              //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
+                              {
+                                  SiAuto.Main.LogMessage(smsSB.ToString());
+                                  smsSB.Clear();
+                                  SiAuto.Main.LogMessage("location + serverityLevel=" + location + serverityLevel);
+                                  smsSB.Insert(0, location + serverityLevel);
+                                  SiAuto.Main.AddCheckpoint("+if", "serverityLevel:" + serverityLevel +
+                                      Environment.NewLine + "location:" + location + Environment.NewLine +
+                                      "eventMessage:" + eventMessage);
+                                  smsQueue.Enqueue(location + "&" + serverityLevel);
+                              }
                           }
                       }
                       string querySiteID = @"SELECT
