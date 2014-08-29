@@ -33,6 +33,7 @@ namespace traprecv {
         private static readonly string m_sender = "拓樸系統管理者";
         static ConcurrentQueue<string> smsQueue = new ConcurrentQueue<string>(); 
         static StringBuilder smsSB = new StringBuilder("test");
+        private static string sendSMS = ConfigurationManager.AppSettings["sendSMS"];
 		static void Main(string[] args) {
 		    
             SiAuto.Si.Enabled = true;
@@ -242,7 +243,7 @@ public.device_status_now.device_no = " + DeviceNo;
                                       {
                                           //update
                                            updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" ,message = $$" + eventMessage + @"$$ WHERE device_no = " + DeviceNo;
-                                          pgsqSqlClient.SqlScriptCmd(updateSqlScript);
+                                          pgsqSqlClient.modify(updateSqlScript);
                                           //send sms
                                           //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
                                           {
@@ -410,7 +411,7 @@ public.device_info.device_name = '" + location + "'";
 )
 VALUES
 	(" + DeviceNo + @", " + serverityLevel + @", $$" + eventMessage + "$$)";
-                      pgsqSqlClient.SqlScriptCmd(insertSqlScript);
+                      pgsqSqlClient.modify(insertSqlScript);
                   }
               }
               catch (Exception e)
@@ -550,7 +551,7 @@ VALUES
 		'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + @"',
 		'" + m_sender + @"(NBI)" + deviceName + ":" + stateChineseDescription + @"',
 		1,
-		1
+		"+sendSMS+@"
 	);";
                             string smsHistory = @"INSERT INTO ams_history (phone_number,message_note) VALUES ('" + phoneNumber + @"','" + deviceStateId + @"');";
                             smsInsertSqlScriptBuilder.AppendLine(insertSqlScript);
