@@ -208,7 +208,7 @@ public.device_info.device_name = '" + location + "'";
                           }
                       }
                   }
-                  if (DeviceNo != null)
+                  if (DeviceNo != null && !serverityLevel.Equals("7"))
                   {
                       string checkIfDeviceNoExistInStatusTable = @"SELECT
 public.device_status_now.device_no
