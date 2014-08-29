@@ -233,6 +233,7 @@ public.device_status_now.device_no = " + DeviceNo;
                                   {
                                       stateResult = dt2.Rows[0].ItemArray[0]
                                                       .ToString();
+                                      string updateSqlScript = null;
                                       if (stateResult.Equals(serverityLevel))
                                       {
                                           //do nothing
@@ -240,7 +241,7 @@ public.device_status_now.device_no = " + DeviceNo;
                                       else
                                       {
                                           //update
-                                          string updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" ,message = $$" + eventMessage + @"$$ WHERE device_no = " + DeviceNo;
+                                           updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" ,message = $$" + eventMessage + @"$$ WHERE device_no = " + DeviceNo;
                                           pgsqSqlClient.SqlScriptCmd(updateSqlScript);
                                           //send sms
                                           //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
@@ -399,15 +400,16 @@ public.device_info.device_name = '" + location + "'";
                           }
                       }
                   }
+                  string insertSqlScript = null;
                   if (DeviceNo != null)
                   {
-                      string insertSqlScript = @"INSERT INTO device_status_history_nbi (
+                       insertSqlScript = @"INSERT INTO device_status_history_nbi (
 	device_no,
 	alarm_status,
 	message_note
 )
 VALUES
-	(" + DeviceNo + @", " + serverityLevel + @", '" + eventMessage + "')";
+	(" + DeviceNo + @", " + serverityLevel + @", $$" + eventMessage + "$$)";
                       pgsqSqlClient.SqlScriptCmd(insertSqlScript);
                   }
               }
