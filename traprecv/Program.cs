@@ -262,7 +262,7 @@ public.device_status_now.device_no = " + DeviceNo;
                           {
                               //insert
                               string insertSqlScript = @"INSERT INTO device_status_now VALUES (" + DeviceNo + @"," + serverityLevel + @",$$" + eventMessage + "$$" + ")";
-                              pgsqSqlClient.SqlScriptCmd(insertSqlScript);
+                              pgsqSqlClient.modify(insertSqlScript);
                               //send sms
                               //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
                               {
