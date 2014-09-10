@@ -191,12 +191,18 @@ namespace traprecv {
           {
               //update device
               string DeviceNo = null;
+              string SiteCName = null;
+              string DeviceCName = null;
               string queryDeviceNo = @"SELECT
-public.device_info.device_no
+public.device_info.device_no,
+public.site_info_nbi.site_name,
+public.device_base.device_cname
 FROM
 public.device_info
+INNER JOIN public.site_info_nbi ON public.device_info.site_id = public.site_info_nbi.site_id
+INNER JOIN public.device_base ON public.device_info.device_id = public.device_base.device_id
 WHERE
-public.device_info.device_name = '" + location + "'";
+public.device_info.device_name ='" + location + "'";
               try
               {
                   using (DataTable dt = pgsqSqlClient.get_DataTable(queryDeviceNo))
@@ -206,6 +212,8 @@ public.device_info.device_name = '" + location + "'";
                           foreach (DataRow row in dt.Rows)
                           {
                               DeviceNo = row[0].ToString();
+                              SiteCName = row[1].ToString();
+                              DeviceCName = row[2].ToString();
                           }
                       }
                   }
@@ -251,7 +259,7 @@ public.device_status_now.device_no = " + DeviceNo;
                                               smsSB.Clear();
                                               smsSB.Insert(0, location + "&" + serverityLevel);
                                               SiAuto.Main.AddCheckpoint("location-serverityLevel-eventMessage", "location:" + location +Environment.NewLine +"serverityLevel:" + serverityLevel + Environment.NewLine +"eventMessage:" + eventMessage);
-                                              smsQueue.Enqueue(location + "&" + serverityLevel);
+                                              smsQueue.Enqueue(SiteCName+" "+DeviceCName + "&" + serverityLevel);
                                           }
                                       }
                                   }
@@ -270,7 +278,7 @@ public.device_status_now.device_no = " + DeviceNo;
                                   smsSB.Clear();
                                   smsSB.Insert(0, location + "&" + serverityLevel);
                                   SiAuto.Main.AddCheckpoint("location-serverityLevel-eventMessage", "location:" + location + Environment.NewLine + "serverityLevel:" + serverityLevel + Environment.NewLine + "eventMessage:" + eventMessage);
-                                  smsQueue.Enqueue(location + "&" + serverityLevel);
+                                  smsQueue.Enqueue(SiteCName + " " + DeviceCName +"&" + serverityLevel);
                               }
                           }
                       }
