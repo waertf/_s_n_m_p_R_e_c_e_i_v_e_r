@@ -549,11 +549,11 @@ VALUES
 		'" + m_sender + @"',
 		'" + phoneNumber + @"',
 		'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + @"',
-		'" + m_sender + @"(NBI)" + deviceName + ":" + stateChineseDescription + @"',
+		'" + m_sender + @"(UEM)" + deviceName + ":" + stateChineseDescription + @"',
 		1,
 		"+sendSMS+@"
 	);";
-                            string smsHistory = @"INSERT INTO ams_history (phone_number,message_note) VALUES ('" + phoneNumber + @"','" + deviceStateId + @"');";
+                            string smsHistory = @"INSERT INTO ams_history (phone_number,message_note) VALUES ('" + phoneNumber + @"','" + m_sender + @"(UEM)" + deviceName + ":" + stateChineseDescription + @"');";
                             smsInsertSqlScriptBuilder.AppendLine(insertSqlScript);
                             smsHistoryBuilder.AppendLine(smsHistory);
                         }
