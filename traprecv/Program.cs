@@ -352,7 +352,7 @@ public.site_status_now_nbi.site_id = " + siteID;
                               else
                               {
                                   string insertSiteID = @"INSERT INTO site_status_now_nbi VALUES(" + siteID + @",100)";
-                                  pgsqSqlClient.SqlScriptCmd(insertSiteID);
+                                  pgsqSqlClient.modify(insertSiteID);
                               }
                           }
                           string getWorstStatus = @"SELECT
@@ -370,7 +370,7 @@ public.site_status_now_nbi.site_id = " + siteID ;
 SET status_code = " + statusList[0] + @" 
 WHERE
 	bsite_id = " + siteID + ";";
-                                  pgsqSqlClient.SqlScriptCmd(updateSiteIDStatus + updateLinkStatus);
+                                  pgsqSqlClient.modify(updateSiteIDStatus + updateLinkStatus);
                               }
                               else
                               {
@@ -575,11 +575,11 @@ VALUES
             }
             if (!smsInsertSqlScriptBuilder.Length.Equals(0))
             {
-                smsSqlClient.SqlScriptCmd(smsInsertSqlScriptBuilder.ToString());
+                smsSqlClient.modify(smsInsertSqlScriptBuilder.ToString());
             }
             if (!smsHistoryBuilder.Length.Equals(0))
             {
-                pgsqSqlClient.SqlScriptCmd(smsHistoryBuilder.ToString());
+                pgsqSqlClient.modify(smsHistoryBuilder.ToString());
             }
         }
 	}

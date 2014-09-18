@@ -2,8 +2,8 @@
 <doc>
   <assembly>
     <name>Devart.Data.PostgreSql</name>
-    <version>6.2.138.0</version>
-    <fullname>Devart.Data.PostgreSql, Version=6.2.138.0, Culture=neutral, PublicKeyToken=09af7300eec23701</fullname>
+    <version>7.3.170.0</version>
+    <fullname>Devart.Data.PostgreSql, Version=7.3.170.0, Culture=neutral, PublicKeyToken=09af7300eec23701</fullname>
   </assembly>
   <members>
     <member name="N:Devart.Common">
@@ -123,94 +123,6 @@
     </member>
     <member name="T:Devart.Common.DbMonitorHelper">
       <summary>Allows to monitor dynamic SQL execution in applications that use .NET data providers. </summary>
-    </member>
-    <member name="T:Devart.Common.MemCryptStorage">
-      <summary>This class represents an in-memory storage for keys and certificates for establishing a protected SSL connection. It allows you to upload certificates and keys into memory once when the application starts and don't load certificate and key from some external sources (for example, files) each time when a connection is opened. </summary>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.AddCa(System.String,System.Byte[])">
-      <summary>Adds a CA certificate with a specific ID to <see cref="T:Devart.Common.MemCryptStorage" />. </summary>
-      <keywords>MemCryptStorage.AddCa method </keywords>
-      <param name="id">The CA certificate ID. </param>
-      <param name="pemCa">The added CA certificate. </param>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.AddCa(System.String,System.String)">
-      <summary>Adds a CA certificate with a specific ID to <see cref="T:Devart.Common.MemCryptStorage" />. </summary>
-      <keywords>MemCryptStorage.AddCa method </keywords>
-      <param name="id">The CA certificate ID. </param>
-      <param name="pemCa">The added CA certificate. </param>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.AddCert(System.String,System.Byte[])">
-      <summary>Adds a certificate with a specific ID to <see cref="T:Devart.Common.MemCryptStorage" />. </summary>
-      <keywords>MemCryptStorage.AddCert method </keywords>
-      <param name="id">The certificate ID. </param>
-      <param name="pemCert">The added certificate. </param>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.AddCert(System.String,System.String)">
-      <summary>Adds a certificate with a specific ID to <see cref="T:Devart.Common.MemCryptStorage" />. </summary>
-      <keywords>MemCryptStorage.AddCert method </keywords>
-      <param name="id">The certificate ID. </param>
-      <param name="pemCert">The added certificate. </param>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.AddKey(System.String,System.Byte[])">
-      <summary>Adds a key with a specific ID to <see cref="T:Devart.Common.MemCryptStorage" />. </summary>
-      <keywords>MemCryptStorage.AddKey method </keywords>
-      <param name="id">The key ID. </param>
-      <param name="pemKey">The added key. </param>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.AddKey(System.String,System.String)">
-      <summary>Adds a key with a specific ID to <see cref="T:Devart.Common.MemCryptStorage" />. </summary>
-      <keywords>MemCryptStorage.AddKey method </keywords>
-      <param name="id">The key ID. </param>
-      <param name="pemKey">The added key. </param>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.ClearAll()">
-      <summary>Deletes all CA certificates, certificates, and keys from the <see cref="T:Devart.Common.MemCryptStorage" />. </summary>
-      <keywords>MemCryptStorage.ClearAll method </keywords>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.ClearCa()">
-      <summary>Deletes all CA certificates from the <see cref="T:Devart.Common.MemCryptStorage" />. </summary>
-      <keywords>MemCryptStorage.ClearCa method </keywords>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.ClearCert()">
-      <summary>Deletes all certificates from the <see cref="T:Devart.Common.MemCryptStorage" />. </summary>
-      <keywords>MemCryptStorage.ClearCert method </keywords>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.ClearKey()">
-      <summary>Deletes all keys from the <see cref="T:Devart.Common.MemCryptStorage" />. </summary>
-      <keywords>MemCryptStorage.ClearKey method </keywords>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.ContainsCa(System.String)">
-      <summary>Determines whether the <see cref="T:Devart.Common.MemCryptStorage" /> contains a CA certificate with the specified ID. </summary>
-      <keywords>MemCryptStorage.ContainsCa method </keywords>
-      <param name="id">The specified ID. </param>
-      <returns><see langword="true" />, if the <see cref="T:Devart.Common.MemCryptStorage" /> contains a CA certificate with the specified ID. </returns>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.ContainsCert(System.String)">
-      <summary>Determines whether the <see cref="T:Devart.Common.MemCryptStorage" /> contains a certificate with the specified ID. </summary>
-      <keywords>MemCryptStorage.ContainsCert method </keywords>
-      <param name="id">The specified ID. </param>
-      <returns><see langword="true" />, if the <see cref="T:Devart.Common.MemCryptStorage" /> contains a certificate with the specified ID. </returns>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.ContainsKey(System.String)">
-      <summary>Determines whether the <see cref="T:Devart.Common.MemCryptStorage" /> contains a key with the specified ID. </summary>
-      <keywords>MemCryptStorage.ContainsKey method </keywords>
-      <param name="id">The specified ID. </param>
-      <returns><see langword="true" />, if the <see cref="T:Devart.Common.MemCryptStorage" /> contains a key with the specified ID. </returns>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.RemoveCa(System.String)">
-      <summary>Removes a CA certificate with the specified ID from the <see cref="T:Devart.Common.MemCryptStorage" />. </summary>
-      <keywords>MemCryptStorage.RemoveCa method </keywords>
-      <param name="id">The specified ID. </param>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.RemoveCert(System.String)">
-      <summary>Removes a certificate with the specified ID from the <see cref="T:Devart.Common.MemCryptStorage" />. </summary>
-      <keywords>MemCryptStorage.RemoveCert method </keywords>
-      <param name="id">The specified ID. </param>
-    </member>
-    <member name="M:Devart.Common.MemCryptStorage.RemoveKey(System.String)">
-      <summary>Removes a key with the specified ID from the <see cref="T:Devart.Common.MemCryptStorage" />. </summary>
-      <keywords>MemCryptStorage.RemoveKey method </keywords>
-      <param name="id">The specified ID. </param>
     </member>
     <member name="T:Devart.Common.ParserBehavior">
       <summary>Defines behavior for <see cref="M:Devart.Data.PostgreSql.PgSqlSelectStatement.Parse(System.String,Devart.Common.ParserBehavior)" />. </summary>
@@ -1119,6 +1031,7 @@
     <member name="F:Devart.Data.PostgreSql.PgSqlBox.Null">
       <summary>Represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlBox" /> object. </summary>
       <keywords>PgSqlBox.Null field </keywords>
+      <value>An object that represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlBox" /> value. </value>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlBox.Parse(System.String)">
       <summary>Converts the specified <see cref="T:System.String" /> representation of a rectangular box to its <see cref="T:Devart.Data.PostgreSql.PgSqlBox" /> equivalent. </summary>
@@ -1189,6 +1102,7 @@
     <member name="F:Devart.Data.PostgreSql.PgSqlCircle.Null">
       <summary>Represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlCircle" /> object. </summary>
       <keywords>PgSqlCircle.Null field </keywords>
+      <value>An object that represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlCircle" /> value. </value>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlCircle.Parse(System.String)">
       <summary>Converts the specified <see cref="T:System.String" /> representation of a circle to its <see cref="T:Devart.Data.PostgreSql.PgSqlCircle" /> equivalent. </summary>
@@ -1265,7 +1179,7 @@
 <para>When working with overloaded stored procedures, use following syntax for executing specific overloaded routine: "StoredProcName:1" or "StoredProcName:5". First example executes first overloaded stored procedure, while second example executes fifth overloaded procedure. This notation affects only describing procedures when <see cref="P:Devart.Data.DbCommandBase.ParameterCheck" /> is <see langword="true" />.</para> </value>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlCommand.CommandTimeout">
-      <summary>Gets or sets the wait time before terminating an attempt to execute a command and generating an error. </summary>
+      <summary>Gets or sets the wait time before terminating an attempt to execute a command and generating an error. Note that it is the time to wait for any server reply since the command was sent to a server, and it doesn't include the time necessary to fetch data if the command selects some data. </summary>
       <keywords>PgSqlCommand.CommandTimeout property </keywords>
       <value>The time (in seconds) to wait for the command to execute. The default value is 30. Not available under .NET Compact Framework. </value>
     </member>
@@ -1319,9 +1233,9 @@
       <value><see langword="true" />, if the <see cref="T:Devart.Data.PostgreSql.PgSqlDataReader" /> object will request data from the server on execution <see cref="M:Devart.Data.PostgreSql.PgSqlCommand.ExecuteReader" />; otherwise <see langword="false" />. The default value is <see langword="true" />. </value>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlCommand.FetchSize">
-      <summary>Gets or sets the number of rows that will be transferred across the network at the same time if <see cref="P:Devart.Data.PostgreSql.PgSqlCommand.FetchAll" /> is set to <see langword="false" />. </summary>
+      <summary>Gets or sets the number of rows that will be transferred across the network at a time if <see cref="P:Devart.Data.PostgreSql.PgSqlCommand.FetchAll" /> is set to <see langword="false" />. </summary>
       <keywords>PgSqlCommand.FetchSize property </keywords>
-      <value>The number of rows that will be transferred across the network at the same time. The default value is 0. </value>
+      <value>The number of rows that will be transferred across the network at a time. The default value is 0. </value>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlCommand.InsertOid">
       <summary>Returns the object ID generated for an OID column by the previous insert command. </summary>
@@ -1526,6 +1440,10 @@
       <summary>Commits the database transaction. </summary>
       <keywords>PgSqlConnection.Commit method </keywords>
     </member>
+    <member name="E:Devart.Data.PostgreSql.PgSqlConnection.ConnectionLost">
+      <summary>Occurs when connection to the database is lost in case <see cref="P:Devart.Data.PostgreSql.PgSqlConnection.LocalFailover" /> is set to <see langword="true" />. You may use this event to implicitly reconnect and reexecute the current operation. </summary>
+      <keywords>PgSqlConnection.ConnectionLost event </keywords>
+    </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlConnection.ConnectionString">
       <summary>Gets or sets the string used to open a PostgreSQL connection. </summary>
       <keywords>PgSqlConnection.ConnectionString property </keywords>
@@ -1563,6 +1481,11 @@
     <member name="E:Devart.Data.PostgreSql.PgSqlConnection.InfoMessage">
       <summary>Occurs when PostgreSQL returns a warning or informational message. </summary>
       <keywords>PgSqlConnection.InfoMessage event </keywords>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlConnection.LocalFailover">
+      <summary>Determines whether the <see cref="E:Devart.Data.PostgreSql.PgSqlConnection.ConnectionLost" /> event, which allows implicit reconnecting and reexectuting the corresponding operation, occurs after connection is lost. </summary>
+      <keywords>PgSqlConnection.LocalFailover property </keywords>
+      <value>If <see langword="true" />,  the <see cref="E:Devart.Data.PostgreSql.PgSqlConnection.ConnectionLost" /> event occurs when connection is lost; otherwise, an exception is thrown. The default value is <see langword="false" />. </value>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlConnection.Name">
       <summary>Gets or sets the name of the component. </summary>
@@ -1653,6 +1576,11 @@
       <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlConnectionStringBuilder" /> class and assigns custom initial values to some properties. </summary>
       <param name="connectionString">Initial connection setup string. </param>
     </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlConnectionStringBuilder.ApplicationName">
+      <summary>Gets or sets the client application name. </summary>
+      <keywords>PgSqlConnectionStringBuilder.ApplicationName property </keywords>
+      <value>The client application name. The default value is an empty string (""). This value changes only when the application explicitly updates it. </value>
+    </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlConnectionStringBuilder.Charset">
       <summary>Gets or sets charset that will be used on the client side. </summary>
       <keywords>PgSqlConnectionStringBuilder.Charset property </keywords>
@@ -1688,6 +1616,11 @@
       <summary>Gets or sets the time in seconds to wait while trying to execute a command before terminating the attempt and generating an error. </summary>
       <keywords>PgSqlConnectionStringBuilder.DefaultCommandTimeout property </keywords>
       <value>The time in seconds to wait while trying to execute a command before terminating the attempt and generating an error. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlConnectionStringBuilder.DefaultFetchAll">
+      <summary>Determines the default value of the <see cref="P:Devart.Data.PostgreSql.PgSqlCommand.FetchAll" /> property of <see cref="T:Devart.Data.PostgreSql.PgSqlCommand" /> instances, created via the <see cref="M:Devart.Data.PostgreSql.PgSqlConnection.CreateCommand" /> method. If the FetchAll mode is enabled, <see cref="T:Devart.Data.PostgreSql.PgSqlDataReader" /> object retrieves all the querried data from the server on execution. </summary>
+      <keywords>PgSqlConnectionStringBuilder.DefaultFetchAll property </keywords>
+      <value>If <see langword="true" />, <see cref="T:Devart.Data.PostgreSql.PgSqlDataReader" /> object retrieves all the querried data from the server when executing a <see cref="T:Devart.Data.PostgreSql.PgSqlCommand" /> instance, created via the <see cref="M:Devart.Data.PostgreSql.PgSqlConnection.CreateCommand" /> method. </value>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlConnectionStringBuilder.Enlist">
       <summary>Gets or sets a Boolean value that indicates whether the connection is automatically enlisted in the current transaction context. </summary>
@@ -1855,6 +1788,16 @@
       <summary>Gets the name of the cursor. </summary>
       <keywords>PgSqlCursor.CursorName property </keywords>
       <value>The name of the cursor. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlCursor.FetchAll">
+      <summary>Gets or sets a value indicating whether the <see cref="T:Devart.Data.PostgreSql.PgSqlDataReader" /> object will request data from the server on execution <see cref="M:Devart.Data.PostgreSql.PgSqlCommand.ExecuteReader" /> method. </summary>
+      <keywords>PgSqlCursor.FetchAll property </keywords>
+      <value><see langword="true" />, if the <see cref="T:Devart.Data.PostgreSql.PgSqlDataReader" /> object will request data from the server on execution <see cref="M:Devart.Data.PostgreSql.PgSqlCommand.ExecuteReader" />; otherwise <see langword="false" />. The default value is <see langword="true" />. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlCursor.FetchSize">
+      <summary>Gets or sets the number of rows that will be transferred across the network at a time if <see cref="P:Devart.Data.PostgreSql.PgSqlCommand.FetchAll" /> is set to <see langword="false" />. </summary>
+      <keywords>PgSqlCursor.FetchSize property </keywords>
+      <value>The number of rows that will be transferred across the network at a time. The default value is 0. </value>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlCursor.GetDataReader()">
       <summary>Gets an <see cref="T:Devart.Data.PostgreSql.PgSqlDataReader" /> for the specified cursor. </summary>
@@ -2314,9 +2257,9 @@
       <returns>The value to return. </returns>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlDataReader.GetProviderSpecificValues(System.Object[])">
-      <summary>Gets all columns in the collection for the current row. If possible, a provider-specific type is used. </summary>
+      <summary>Gets all column values for the current row. If possible, a provider-specific type is used. </summary>
       <keywords>PgSqlDataReader.GetProviderSpecificValues method </keywords>
-      <param name="values">An array of <see cref="T:System.Object" /> into which to copy the columns. </param>
+      <param name="values">An array of <see cref="T:System.Object" /> into which to copy the column values. </param>
       <returns>The number of instances of <see cref="T:System.Object" /> in the array. </returns>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlDataReader.GetSchemaTable()">
@@ -2343,9 +2286,9 @@
       <returns>The value to return. </returns>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlDataReader.GetValues(System.Object[])">
-      <summary>Gets all columns in the collection for the current row. </summary>
+      <summary>Gets all column values for the current row. </summary>
       <keywords>PgSqlDataReader.GetValues method </keywords>
-      <param name="values">An array of <see cref="T:System.Object" /> into which to copy the attribute columns. </param>
+      <param name="values">An array of <see cref="T:System.Object" /> into which to copy the attribute column values. </param>
       <returns>The number of instances of <see cref="T:System.Object" /> in the array. </returns>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlDataReader.HasRows">
@@ -2353,6 +2296,13 @@
       <keywords>PgSqlDataReader.HasRows property </keywords>
       <value>
         <see langword="true" /> if the <see cref="T:Devart.Data.PostgreSql.PgSqlDataReader" /> contains one or more rows; otherwise, <see langword="false" />. </value>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlDataReader.IsDBNull(System.Int32)">
+      <summary>Gets a value indicating whether the column contains non-existent or missing values. </summary>
+      <keywords>PgSqlDataReader.IsDBNull method </keywords>
+      <param name="ordinal"> </param>
+      <returns>
+        <see langword="true" /> if the specified column value is equivalent to <see cref="T:System.DBNull" />; otherwise, <see langword="false" />. </returns>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlDataReader.NextResult()">
       <summary>Advances the data reader to the next result, when reading the results of batch SQL statements. </summary>
@@ -2524,7 +2474,7 @@
       <value>The name of the table. </value>
     </member>
     <member name="T:Devart.Data.PostgreSql.PgSqlDateRange">
-      <summary>Represents the PostgreSQL daterange type. Each object of the <see cref="T:Devart.Data.PostgreSql.PgSqlDateRange" /> class stores a range of integer values. </summary>
+      <summary>Represents the PostgreSQL daterange type. Each object of the <see cref="T:Devart.Data.PostgreSql.PgSqlDateRange" /> class stores a range of date values. </summary>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlDateRange.#ctor(Devart.Data.PostgreSql.PgSqlTimeStamp,Devart.Data.PostgreSql.PgSqlTimeStamp)">
       <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlDateRange" /> structure with the specified range bounds. This constructor allows specifying whether each bound will be inclusive or not. </summary>
@@ -2627,6 +2577,11 @@
       <keywords>PgSqlDump.BlockSize property </keywords>
       <value>The size of a data block for dumping large objects. </value>
     </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlDump.CommitBatchSize">
+      <summary>Gets or sets the max size in bytes of a single insert statement with multiple values in the script. Ignored if <see cref="P:Devart.Data.PostgreSql.PgSqlDump.UseMultirowSyntax" /> is set to <see langword="false" />. </summary>
+      <keywords>PgSqlDump.CommitBatchSize property </keywords>
+      <value>The max size in bytes of a single insert statement with multiple values in the script. </value>
+    </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlDump.Connection">
       <summary>Gets or sets the <see cref="T:Devart.Data.PostgreSql.PgSqlConnection" /> used by this instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlDump" />. </summary>
       <keywords>PgSqlDump.Connection property </keywords>
@@ -2635,7 +2590,7 @@
     <member name="P:Devart.Data.PostgreSql.PgSqlDump.CreateConstraints">
       <summary>Gets or sets a value that determines whether to add statements that create table constraints in the dump. </summary>
       <keywords>PgSqlDump.CreateConstraints property </keywords>
-      <value><see langword="true" />, if <see cref="T:Devart.Data.PostgreSql.PgSqlDump" /> adds table constraints to the script; otherwise, <see langword="false" />. </value>
+      <value><see langword="true" />, if <see cref="T:Devart.Data.PostgreSql.PgSqlDump" /> should add table constraints to the script; otherwise, <see langword="false" />. </value>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlDump.DumpText">
       <summary>Gets as a result of <see cref="M:Devart.Data.PostgreSql.PgSqlDump.Backup()" /> execution, or sets data needed to execute <see cref="M:Devart.Data.PostgreSql.PgSqlDump.Restore()" /> method. </summary>
@@ -2681,6 +2636,11 @@
       <summary>Gets or sets a list of the tables which will be used in the script. Table names are separated by semicolon. </summary>
       <keywords>PgSqlDump.Tables property </keywords>
       <value><see cref="T:System.String" /> containing a list of the tables separated by semicolon. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlDump.UseMultirowSyntax">
+      <summary>Determines whether to use the multirow VALUES syntax when generating INSERT statements. </summary>
+      <keywords>PgSqlDump.UseMultirowSyntax property </keywords>
+      <value><see langword="true" />, if <see cref="T:Devart.Data.PostgreSql.PgSqlDump" /> should generate INSERT statements for table data using the multirow VALUES syntax; otherwise, <see langword="false" />. </value>
     </member>
     <member name="T:Devart.Data.PostgreSql.PgSqlDumpObjects">
       <summary>Determines which database objects will be included in the dump. </summary>
@@ -2737,6 +2697,21 @@
       <keywords>PgSqlError.CallStack property </keywords>
       <value>The error context. </value>
     </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlError.ColumnName">
+      <summary>Gets the name of the column, the error is associated with. </summary>
+      <keywords>PgSqlError.ColumnName property </keywords>
+      <value>The name of the column, the error is associated with, if the error is associated with a specific column; otherwise, an empty string. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlError.ConstraintName">
+      <summary>Gets the name of the constraint, the error is associated with. </summary>
+      <keywords>PgSqlError.ConstraintName property </keywords>
+      <value>The name of the constraint, the error is associated with, if the error is associated with a specific constraint; otherwise, an empty string. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlError.DataTypeName">
+      <summary>Gets the name of the data type, the error is associated with. </summary>
+      <keywords>PgSqlError.DataTypeName property </keywords>
+      <value>The name of the data type, the error is associated with, if the error is associated with a specific data type; otherwise, an empty string. </value>
+    </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlError.DetailMessage">
       <summary>Gets an optional secondary error message carrying more detail about the problem. </summary>
       <keywords>PgSqlError.DetailMessage property </keywords>
@@ -2746,6 +2721,11 @@
       <summary>Gets the SQLSTATE code for the error. </summary>
       <keywords>PgSqlError.ErrorCode property </keywords>
       <value>The SQLSTATE code. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlError.ErrorSql">
+      <summary>Gets the query that caused the error. </summary>
+      <keywords>PgSqlError.ErrorSql property </keywords>
+      <value>The query that caused the error. </value>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlError.FileName">
       <summary>Gets the file name of the source-code location where the error was reported. </summary>
@@ -2762,6 +2742,16 @@
       <summary>Gets an optional suggestion on what to do about the problem. </summary>
       <keywords>PgSqlError.Hint property </keywords>
       <value>The suggestion text. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlError.InternalPosition">
+      <summary>Gets the error cursor position as 1-based index in the <see cref="P:Devart.Data.PostgreSql.PgSqlError.InternalQuery" /> string. </summary>
+      <keywords>PgSqlError.InternalPosition property </keywords>
+      <value>The error cursor position in <see cref="P:Devart.Data.PostgreSql.PgSqlError.InternalQuery" />. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlError.InternalQuery">
+      <summary>Gets the text of an internally-generated command that caused the error, for example, a SQL query performed by a PL/pgSQL function. </summary>
+      <keywords>PgSqlError.InternalQuery property </keywords>
+      <value>The text of an internally-generated command that caused the error. </value>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlError.LineNumber">
       <summary>Gets the line number of the source-code location where the error was reported. </summary>
@@ -2783,10 +2773,20 @@
       <keywords>PgSqlError.ProcedureName property </keywords>
       <value>The name of the routine. </value>
     </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlError.SchemaName">
+      <summary>Gets the name of the schema containing the object, the error is associated with. </summary>
+      <keywords>PgSqlError.SchemaName property </keywords>
+      <value>The name of the schema containing the object, the error is associated with, if the error is associated with a specific database object; otherwise, an empty string. </value>
+    </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlError.Severity">
       <summary>Gets the of message severity. </summary>
       <keywords>PgSqlError.Severity property </keywords>
       <value>One of the <see cref="T:Devart.Data.PostgreSql.Severity" /> values. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlError.TableName">
+      <summary>Gets the name of the table, the error is associated with. </summary>
+      <keywords>PgSqlError.TableName property </keywords>
+      <value>The name of the table, the error is associated with, if the error is associated with a specific table; otherwise, an empty string. </value>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlError.ToString()">
       <summary>Returns string representation of the <see cref="T:Devart.Data.PostgreSql.PgSqlError" /> object. </summary>
@@ -2818,15 +2818,40 @@
       <keywords>PgSqlException.CallStack property </keywords>
       <value>String indicating where error occurred. </value>
     </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlException.ColumnName">
+      <summary>Gets the name of the column, the error is associated with. </summary>
+      <keywords>PgSqlException.ColumnName property </keywords>
+      <value>The name of the column, the error is associated with, if the error is associated with a specific column; otherwise, an empty string. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlException.ConstraintName">
+      <summary>Gets the name of the constraint, the error is associated with. </summary>
+      <keywords>PgSqlException.ConstraintName property </keywords>
+      <value>The name of the constraint, the error is associated with, if the error is associated with a specific constraint; otherwise, an empty string. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlException.DataTypeName">
+      <summary>Gets the name of the data type, the error is associated with. </summary>
+      <keywords>PgSqlException.DataTypeName property </keywords>
+      <value>The name of the data type, the error is associated with, if the error is associated with a specific data type; otherwise, an empty string. </value>
+    </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlException.DetailMessage">
       <summary>Gets a secondary error message. </summary>
       <keywords>PgSqlException.DetailMessage property </keywords>
       <value>A secondary error message. </value>
     </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlException.Error">
+      <summary>Gets the <see cref="T:Devart.Data.PostgreSql.PgSqlError" /> that caused the exception. </summary>
+      <keywords>PgSqlException.Error property </keywords>
+      <value>The <see cref="T:Devart.Data.PostgreSql.PgSqlError" /> that caused the exception. </value>
+    </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlException.ErrorCode">
       <summary>Gets the SQLSTATE code for the error. </summary>
       <keywords>PgSqlException.ErrorCode property </keywords>
       <value>The SQLSTATE code of the error. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlException.ErrorSql">
+      <summary>Gets the query that caused the error. </summary>
+      <keywords>PgSqlException.ErrorSql property </keywords>
+      <value>The query that caused the error. </value>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlException.FileName">
       <summary>Gets the file name of the source-code location where the error occurred. </summary>
@@ -2843,6 +2868,16 @@
       <summary>Gets an optional suggestion what to do about the problem. </summary>
       <keywords>PgSqlException.Hint property </keywords>
       <value>An optional suggestion what to do. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlException.InternalPosition">
+      <summary>Gets the error cursor position as 1-based index in the <see cref="P:Devart.Data.PostgreSql.PgSqlException.InternalQuery" /> string. </summary>
+      <keywords>PgSqlException.InternalPosition property </keywords>
+      <value>The error cursor position in <see cref="P:Devart.Data.PostgreSql.PgSqlException.InternalQuery" />. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlException.InternalQuery">
+      <summary>Gets the text of an internally-generated command that caused the error, for example, a SQL query performed by a PL/pgSQL function. </summary>
+      <keywords>PgSqlException.InternalQuery property </keywords>
+      <value>The text of an internally-generated command that caused the error. </value>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlException.LineNumber">
       <summary>Gets the line number of the source-code location where the error occurred. </summary>
@@ -2864,10 +2899,147 @@
       <keywords>PgSqlException.ProcedureName property </keywords>
       <value>The name of the source-code routine where the error occurred. </value>
     </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlException.SchemaName">
+      <summary>Gets the name of the schema containing the object, the error is associated with. </summary>
+      <keywords>PgSqlException.SchemaName property </keywords>
+      <value>The name of the schema containing the object, the error is associated with, if the error is associated with a specific database object; otherwise, an empty string. </value>
+    </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlException.Severity">
       <summary>Gets a value indicating a severity of the error. </summary>
       <keywords>PgSqlException.Severity property </keywords>
       <value>One of the <see cref="T:Devart.Data.PostgreSql.Severity" /> value. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlException.TableName">
+      <summary>Gets the name of the table, the error is associated with. </summary>
+      <keywords>PgSqlException.TableName property </keywords>
+      <value>The name of the table, the error is associated with, if the error is associated with a specific table; otherwise, an empty string. </value>
+    </member>
+    <member name="T:Devart.Data.PostgreSql.PgSqlInet">
+      <summary>Represents the PostgreSQL inet or cidr data type that stores an IPv4 or IPv6 address and optionally its subnet. </summary>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInet.#ctor(System.Byte[])">
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structure with the IP v4 or v6 address specified as an array of bytes. </summary>
+      <param name="address">The IP address to assign to the structure. </param>
+      <overloads>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structure with the specified parameters. </overloads>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInet.#ctor(System.Byte[],System.Byte)">
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structure with the IP v4 or v6 subnet mask. </summary>
+      <param name="address">The IP address to assign to the structure. </param>
+      <param name="netmaskBits">The number of network address bits. </param>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInet.#ctor(System.Net.IPAddress)">
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structure with the IP v4 or v6 address specified as an array of bytes. </summary>
+      <param name="address">The IP address to assign to the structure. </param>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInet.#ctor(System.Net.IPAddress,System.Byte)">
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structure with the IP v4 or v6 subnet mask. </summary>
+      <param name="address">The IP address to assign to the structure. </param>
+      <param name="netmaskBits">The number of network address bits. </param>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlInet.Address">
+      <summary>Gets the IP address. </summary>
+      <keywords>PgSqlInet.Address property </keywords>
+      <value>An IP v4 or v6 address. </value>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInet.CompareTo(Devart.Data.PostgreSql.PgSqlInet)">
+      <summary>Compares the current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> object to the specified <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> object  and returns an integer that represents their relative values. </summary>
+      <keywords>PgSqlInet.CompareTo method </keywords>
+      <param name="value">A <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> value to compare with. </param>
+      <returns>A signed number indicating the relative values of the current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structure and the object.
+<list type="table">
+  <listheader>
+    <term>Return Value</term>
+    <description>Condition</description>
+  </listheader>
+  <item>
+    <term>Less than zero</term>
+    <description>The value of the current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> is less than the argument.</description>
+  </item>
+  <item>
+    <term>Zero</term>
+    <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> is the same to the argument.</description>
+   </item>
+   <item>
+     <term>Greater than zero</term>
+     <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> is greater than the argument.</description>
+   </item>
+</list> </returns>
+      <overloads>Compares the current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> object to the specified object. </overloads>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInet.CompareTo(System.Object)">
+      <summary>Compares the current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> object to the specified object  and returns an integer that represents their relative values. </summary>
+      <keywords>PgSqlInet.CompareTo method </keywords>
+      <param name="value">An object value to compare with. </param>
+      <returns>A signed number indicating the relative values of the current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structure and the object.
+<list type="table">
+  <listheader>
+    <term>Return Value</term>
+    <description>Condition</description>
+  </listheader>
+  <item>
+    <term>Less than zero</term>
+    <description>The value of the current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> is less than the argument.</description>
+  </item>
+  <item>
+    <term>Zero</term>
+    <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> is the same to the argument.</description>
+   </item>
+   <item>
+     <term>Greater than zero</term>
+     <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> is greater than the argument.</description>
+   </item>
+</list> </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInet.Equals(System.Object)">
+      <summary>Compares the specified object parameter to the <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> value. </summary>
+      <keywords>PgSqlInet.Equals method </keywords>
+      <param name="obj">An object value to compare with. </param>
+      <returns><see langword="true" /> if object is an instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> and has the same IP address or subnet mask; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInet.GetHashCode()">
+      <summary>Gets a hash code for the <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> instance. </summary>
+      <keywords>PgSqlInet.GetHashCode method </keywords>
+      <returns>A 32-bit signed integer hash code. </returns>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlInet.IsNull">
+      <summary>Gets a value indicating whether the <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structure represents <see cref="F:Devart.Data.PostgreSql.PgSqlInet.Null" />. </summary>
+      <keywords>PgSqlInet.IsNull property </keywords>
+      <value><see langword="true" /> if the <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structure represents <see cref="F:Devart.Data.PostgreSql.PgSqlInet.Null" />; otherwise, <see langword="false" />. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlInet.NetmaskBits">
+      <summary>Gets the number of bits in the netmask. </summary>
+      <keywords>PgSqlInet.NetmaskBits property </keywords>
+      <value>The number of bits in the netmask. </value>
+    </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlInet.Null">
+      <summary>Represents a NULL value that can be assigned to the <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structure. </summary>
+      <keywords>PgSqlInet.Null field </keywords>
+      <value>An object that represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> value. </value>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInet.Parse(System.String)">
+      <summary>Converts the specified <see cref="T:System.String" /> representation of an IP address to its <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> equivalent. </summary>
+      <keywords>PgSqlInet.Parse method </keywords>
+      <param name="value">The <see cref="T:System.String" /> to be parsed that contains an IP address. For IP v6 address must be in colon-hexadecimal notation. For IP v4 address must be in dotted-quad notation. </param>
+      <returns>A <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structure equal to an IP address represented by the specified <see cref="T:System.String" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInet.ToString()">
+      <summary>Converts the current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structure to a <see cref="T:System.String" />. </summary>
+      <keywords>PgSqlInet.ToString method </keywords>
+      <returns>A <see cref="T:System.String" /> object. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInet.op_Equality(Devart.Data.PostgreSql.PgSqlInet,Devart.Data.PostgreSql.PgSqlInet)">
+      <summary>Determines whether two <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> values are equal. </summary>
+      <keywords>PgSqlInet.op_Equality method </keywords>
+      <param name="left">First <see cref="T:Devart.Data.PostgreSql.PgSqlInet" />. </param>
+      <param name="right">Second <see cref="T:Devart.Data.PostgreSql.PgSqlInet" />. </param>
+      <returns><see langword="true" /> if two <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> values are equal; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInet.op_Inequality(Devart.Data.PostgreSql.PgSqlInet,Devart.Data.PostgreSql.PgSqlInet)">
+      <summary>Compares two <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structures to determine if they are not equal. </summary>
+      <keywords>PgSqlInet.op_Inequality method </keywords>
+      <param name="left">Left <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> operand. </param>
+      <param name="right">Right <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> operand. </param>
+      <returns><see langword="true" /> if two <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> values are not equal; otherwise, <see langword="false" />. </returns>
     </member>
     <member name="T:Devart.Data.PostgreSql.PgSqlInfoMessageEventArgs">
       <summary>Provides data for the <see cref="E:Devart.Data.PostgreSql.PgSqlConnection.InfoMessage" /> event. </summary>
@@ -2961,6 +3133,55 @@
       <param name="value2">Second <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" />. </param>
       <returns>A <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> structure. </returns>
     </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInterval.CompareTo(Devart.Data.PostgreSql.PgSqlInterval)">
+      <summary>Compares the current <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> object to the specified <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> object  and returns an integer that represents their relative values. </summary>
+      <keywords>PgSqlInterval.CompareTo method </keywords>
+      <param name="value">A <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> value to compare with. </param>
+      <returns>A signed number indicating the relative values of the current <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> structure and the object.
+<list type="table">
+  <listheader>
+    <term>Return Value</term>
+    <description>Condition</description>
+  </listheader>
+  <item>
+    <term>Less than zero</term>
+    <description>The value of the current <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> is less than the argument.</description>
+  </item>
+  <item>
+    <term>Zero</term>
+    <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> is the same to the argument.</description>
+   </item>
+   <item>
+     <term>Greater than zero</term>
+     <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> is greater than the argument.</description>
+   </item>
+</list> </returns>
+      <overloads>Compares the current <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> object to the specified object. </overloads>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlInterval.CompareTo(System.Object)">
+      <summary>Compares the current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> object to the specified object  and returns an integer that represents their relative values. </summary>
+      <keywords>PgSqlInterval.CompareTo method </keywords>
+      <param name="value">An object value to compare with. </param>
+      <returns>A signed number indicating the relative values of the current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> structure and the object.
+<list type="table">
+  <listheader>
+    <term>Return Value</term>
+    <description>Condition</description>
+  </listheader>
+  <item>
+    <term>Less than zero</term>
+    <description>The value of the current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> is less than the argument.</description>
+  </item>
+  <item>
+    <term>Zero</term>
+    <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> is the same to the argument.</description>
+   </item>
+   <item>
+     <term>Greater than zero</term>
+     <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> is greater than the argument.</description>
+   </item>
+</list> </returns>
+    </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlInterval.Days">
       <summary>Gets number of days stored in <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> object. </summary>
       <keywords>PgSqlInterval.Days property </keywords>
@@ -3042,6 +3263,7 @@
     <member name="F:Devart.Data.PostgreSql.PgSqlInterval.Null">
       <summary>Represents the null value of a <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> object. </summary>
       <keywords>PgSqlInterval.Null field </keywords>
+      <value>An object that represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> value. </value>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlInterval.Parse(System.String)">
       <summary>Converts the specified <see cref="T:System.String" /> representation of a date to its <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> equivalent. </summary>
@@ -3294,6 +3516,12 @@
     <member name="M:Devart.Data.PostgreSql.PgSqlLargeObject.Open()">
       <summary>Opens the large object specified by the <see cref="P:Devart.Data.PostgreSql.PgSqlLargeObject.Oid" /> property. </summary>
       <keywords>PgSqlLargeObject.Open method </keywords>
+      <overloads>Opens the large object specified by the <see cref="P:Devart.Data.PostgreSql.PgSqlLargeObject.Oid" /> property. </overloads>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlLargeObject.Open(Devart.Data.PostgreSql.PgSqlLargeObjectOpenMode)">
+      <summary>Opens the large object specified by the <see cref="P:Devart.Data.PostgreSql.PgSqlLargeObject.Oid" /> property with the specified mode - for reading or writing. </summary>
+      <keywords>PgSqlLargeObject.Open method </keywords>
+      <param name="mode">One of the <see cref="T:Devart.Data.PostgreSql.PgSqlLargeObjectOpenMode" /> values. </param>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlLargeObject.Position">
       <summary>Gets the current position of the <see cref="T:Devart.Data.PostgreSql.PgSqlLargeObject" />. </summary>
@@ -3319,8 +3547,8 @@
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlLargeObject.Seek(System.Int64,System.IO.SeekOrigin)">
       <summary>Changes the current read or write location associated with the large object. </summary>
-      <keywords>M:Devart.Data.PostgreSql.PgSqlLargeObject.Read(System.Byte[],System.Int32,System.Int32)                                              </keywords>
-      <keywords>M:Devart.Data.PostgreSql.PgSqlLargeObject.Write(System.Byte[],System.Int32,System.Int32)                                              </keywords>
+      <keywords>M:Devart.Data.PostgreSql.PgSqlLargeObject.Read(System.Byte[],System.Int32,System.Int32)                                                                   </keywords>
+      <keywords>M:Devart.Data.PostgreSql.PgSqlLargeObject.Write(System.Byte[],System.Int32,System.Int32)                                                                   </keywords>
       <keywords>P:Devart.Data.PostgreSql.PgSqlLargeObject.CanSeek </keywords>
       <keywords>PgSqlLargeObject.Seek method </keywords>
       <param name="offset">A byte offset relative to the origin parameter. </param>
@@ -3334,8 +3562,8 @@
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlLargeObject.Write(System.Byte[],System.Int32,System.Int32)">
       <summary>Writes an array of bytes to <see cref="T:Devart.Data.PostgreSql.PgSqlLargeObject" />. </summary>
-      <keywords>M:Devart.Data.PostgreSql.PgSqlLargeObject.Read(System.Byte[],System.Int32,System.Int32)                                              </keywords>
-      <keywords>M:Devart.Data.PostgreSql.PgSqlLargeObject.Seek(System.Int64,System.IO.SeekOrigin)                                              </keywords>
+      <keywords>M:Devart.Data.PostgreSql.PgSqlLargeObject.Read(System.Byte[],System.Int32,System.Int32)                                                                   </keywords>
+      <keywords>M:Devart.Data.PostgreSql.PgSqlLargeObject.Seek(System.Int64,System.IO.SeekOrigin)                                                                   </keywords>
       <keywords>P:Devart.Data.PostgreSql.PgSqlLargeObject.CanWrite </keywords>
       <keywords>PgSqlLargeObject.Write method </keywords>
       <param name="buffer">The array of bytes to copy data from. </param>
@@ -3346,6 +3574,15 @@
       <summary>Writes a byte to the current position in the <see cref="T:Devart.Data.PostgreSql.PgSqlLargeObject" /> and advances the position by one byte. </summary>
       <keywords>PgSqlLargeObject.WriteByte method </keywords>
       <param name="value">The byte to write. </param>
+    </member>
+    <member name="T:Devart.Data.PostgreSql.PgSqlLargeObjectOpenMode">
+      <summary>Specifies how to open an existing large object - for reading or for writing. </summary>
+    </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlLargeObjectOpenMode.Read">
+      <summary>Open a <see cref="T:Devart.Data.PostgreSql.PgSqlLargeObject" /> for reading. </summary>
+    </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlLargeObjectOpenMode.Write">
+      <summary>Open a <see cref="T:Devart.Data.PostgreSql.PgSqlLargeObject" /> for writing. </summary>
     </member>
     <member name="T:Devart.Data.PostgreSql.PgSqlLoader">
       <summary>Serves to load external data into the PostgreSQL database. </summary>
@@ -3384,6 +3621,11 @@
     <member name="E:Devart.Data.PostgreSql.PgSqlLoader.Error">
       <summary>The event is raised when an error occurs during a load operation. </summary>
       <keywords>PgSqlLoader.Error event </keywords>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlLoader.Freeze">
+      <summary>Enables freezeing of the loaded rows. Rows will be frozen only if the table being loaded has been created or truncated in the current subtransaction, there are no cursors open and there are no older snapshots held by this transaction. </summary>
+      <keywords>PgSqlLoader.Freeze property </keywords>
+      <value><see langword="true" />, if the loaded rows should be frozen; otherwise <see langword="false" />. Default valuse if <see langword="false" />. </value>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlLoader.Mode">
       <summary>Gets or sets the operating mode of the <see cref="T:Devart.Data.PostgreSql.PgSqlLoader" /> </summary>
@@ -3502,6 +3744,121 @@
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlLoaderMode.Text">
       <summary>The text mode is used, which is the only option available for servers 7.3 and older. </summary>
+    </member>
+    <member name="T:Devart.Data.PostgreSql.PgSqlLocalization">
+      <summary>This static class allows configuring localization settings. </summary>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlLocalization.TimeZone">
+      <summary>Determines the time zone to convert the queried PostgreSQL date/time values to. </summary>
+      <keywords>PgSqlLocalization.TimeZone property </keywords>
+      <value>A string with a time zone in the format "HH:MM" optionally preceded by a sign - "+" or "-". </value>
+    </member>
+    <member name="T:Devart.Data.PostgreSql.PgSqlMacAddr">
+      <summary>Represents the PostgreSQL macaddr data type that stores MAC addresses. </summary>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlMacAddr.#ctor(System.Byte[])">
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> structure with the MAC address specified as an array of bytes. </summary>
+      <param name="address">The MAC address to assign to the structure. </param>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlMacAddr.Address">
+      <summary>Gets the MAC address. </summary>
+      <keywords>PgSqlMacAddr.Address property </keywords>
+      <value>A MAC address. </value>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlMacAddr.CompareTo(Devart.Data.PostgreSql.PgSqlMacAddr)">
+      <summary>Compares the current <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> object to the specified <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> object  and returns an integer that represents their relative values. </summary>
+      <keywords>PgSqlMacAddr.CompareTo method </keywords>
+      <param name="value">A <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> value to compare with. </param>
+      <returns>A signed number indicating the relative values of the current <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> structure and the object.
+<list type="table">
+  <listheader>
+    <term>Return Value</term>
+    <description>Condition</description>
+  </listheader>
+  <item>
+    <term>Less than zero</term>
+    <description>The value of the current <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> is less than the argument.</description>
+  </item>
+  <item>
+    <term>Zero</term>
+    <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> is the same to the argument.</description>
+   </item>
+   <item>
+     <term>Greater than zero</term>
+     <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> is greater than the argument.</description>
+   </item>
+</list> </returns>
+      <overloads>Compares the current <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> object to the specified object. </overloads>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlMacAddr.CompareTo(System.Object)">
+      <summary>Compares the current <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> object to the specified object  and returns an integer that represents their relative values. </summary>
+      <keywords>PgSqlMacAddr.CompareTo method </keywords>
+      <param name="value">An object value to compare with. </param>
+      <returns>A signed number indicating the relative values of the current <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> structure and the object.
+<list type="table">
+  <listheader>
+    <term>Return Value</term>
+    <description>Condition</description>
+  </listheader>
+  <item>
+    <term>Less than zero</term>
+    <description>The value of the current <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> is less than the argument.</description>
+  </item>
+  <item>
+    <term>Zero</term>
+    <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> is the same to the argument.</description>
+   </item>
+   <item>
+     <term>Greater than zero</term>
+     <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> is greater than the argument.</description>
+   </item>
+</list> </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlMacAddr.Equals(System.Object)">
+      <summary>Compares the specified object parameter to the <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> value. </summary>
+      <keywords>PgSqlMacAddr.Equals method </keywords>
+      <param name="obj">An object value to compare with. </param>
+      <returns><see langword="true" /> if object is an instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> and has the same IP address or subnet mask; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlMacAddr.GetHashCode()">
+      <summary>Gets a hash code for the <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> instance. </summary>
+      <keywords>PgSqlMacAddr.GetHashCode method </keywords>
+      <returns>A 32-bit signed integer hash code. </returns>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlMacAddr.IsNull">
+      <summary>Gets a value indicating whether the <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> structure represents <see cref="F:Devart.Data.PostgreSql.PgSqlMacAddr.Null" />. </summary>
+      <keywords>PgSqlMacAddr.IsNull property </keywords>
+      <value><see langword="true" /> if the <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> structure represents <see cref="F:Devart.Data.PostgreSql.PgSqlMacAddr.Null" />; otherwise, <see langword="false" />. </value>
+    </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlMacAddr.Null">
+      <summary>Represents a NULL value that can be assigned to the <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> structure. </summary>
+      <keywords>PgSqlMacAddr.Null field </keywords>
+      <value>An object that represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> value. </value>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlMacAddr.Parse(System.String)">
+      <summary>Converts the specified <see cref="T:System.String" /> representation of an IP address to its <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> equivalent. </summary>
+      <keywords>PgSqlMacAddr.Parse method </keywords>
+      <param name="value">The <see cref="T:System.String" /> to be parsed. It must be a hexadecimal representation of a six-byte MAC address with optional delimiter characters: '.', ':', or '-'. </param>
+      <returns>A <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> structure equal to the polygon represented by the specified <see cref="T:System.String" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlMacAddr.ToString()">
+      <summary>Converts the current <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> structure to a <see cref="T:System.String" />. </summary>
+      <keywords>PgSqlMacAddr.ToString method </keywords>
+      <returns>A <see cref="T:System.String" /> object. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlMacAddr.op_Equality(Devart.Data.PostgreSql.PgSqlMacAddr,Devart.Data.PostgreSql.PgSqlMacAddr)">
+      <summary>Determines whether two <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> values are equal. </summary>
+      <keywords>PgSqlMacAddr.op_Equality method </keywords>
+      <param name="left">First <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" />. </param>
+      <param name="right">Second <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" />. </param>
+      <returns><see langword="true" /> if two <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> values are equal; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlMacAddr.op_Inequality(Devart.Data.PostgreSql.PgSqlMacAddr,Devart.Data.PostgreSql.PgSqlMacAddr)">
+      <summary>Compares two <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> structures to determine if they are not equal. </summary>
+      <keywords>PgSqlMacAddr.op_Inequality method </keywords>
+      <param name="left">Left <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> operand. </param>
+      <param name="right">Right <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> operand. </param>
+      <returns><see langword="true" /> if two <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> values are not equal; otherwise, <see langword="false" />. </returns>
     </member>
     <member name="T:Devart.Data.PostgreSql.PgSqlMetaDataCollectionNames">
       <summary>Enumerates collection names you can use for metadata retrieval purposes. </summary>
@@ -3795,7 +4152,7 @@
       <param name="value">An Object that is the value of the <see cref="T:Devart.Data.PostgreSql.PgSqlParameter" />. </param>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlParameter.#ctor(System.String,Devart.Data.PostgreSql.PgSqlType,System.Int32,System.String)">
-      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlParameter" /> class with the parameter name, data type, width, and source column name. </summary>
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlParameter" /> class with the parameter name, data type, width, and source column name. For internal use. </summary>
       <param name="parameterName">The name of the parameter. </param>
       <param name="dbType">One of the <see cref="T:Devart.Data.PostgreSql.PgSqlType" /> values. </param>
       <param name="size">The maximum size, in bytes, of the data within the column. </param>
@@ -3899,19 +4256,19 @@
       <returns>The new <see cref="T:Devart.Data.PostgreSql.PgSqlParameter" /> object. </returns>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlParameterCollection.Add(System.String,Devart.Data.PostgreSql.PgSqlType,System.Int32)">
-      <summary>Adds a <see cref="T:Devart.Data.PostgreSql.PgSqlParameter" /> to the <see cref="T:Devart.Data.PostgreSql.PgSqlParameterCollection" /> given the the parameter name, data type, and column width. </summary>
+      <summary>Adds a <see cref="T:Devart.Data.PostgreSql.PgSqlParameter" /> to the <see cref="T:Devart.Data.PostgreSql.PgSqlParameterCollection" /> given the the parameter name, data type, and data size. </summary>
       <keywords>PgSqlParameterCollection.Add method </keywords>
       <param name="parameterName">The name of the parameter. </param>
-      <param name="dbType"> </param>
-      <param name="size">The width of the column. </param>
+      <param name="dbType">One of the <see cref="T:Devart.Data.PostgreSql.PgSqlType" /> values. </param>
+      <param name="size">The maximum size, in bytes, of the data the parameter can contain. </param>
       <returns>The new <see cref="T:Devart.Data.PostgreSql.PgSqlParameter" /> object. </returns>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlParameterCollection.Add(System.String,Devart.Data.PostgreSql.PgSqlType,System.Int32,System.String)">
-      <summary>Adds a <see cref="T:Devart.Data.PostgreSql.PgSqlParameter" /> to the <see cref="T:Devart.Data.PostgreSql.PgSqlParameterCollection" /> given the parameter name, data type, column width, and source column name. </summary>
+      <summary>Adds a <see cref="T:Devart.Data.PostgreSql.PgSqlParameter" /> to the <see cref="T:Devart.Data.PostgreSql.PgSqlParameterCollection" /> given the parameter name, data type, column width, and source column name. For internal use. </summary>
       <keywords>PgSqlParameterCollection.Add method </keywords>
       <param name="parameterName">The name of the parameter. </param>
-      <param name="dbType">The type of the parameter. </param>
-      <param name="size">The width of the column. </param>
+      <param name="dbType">One of the <see cref="T:Devart.Data.PostgreSql.PgSqlType" /> values. </param>
+      <param name="size">The maximum size, in bytes, of the data the parameter can contain. </param>
       <param name="sourceColumn">The name of the source column. </param>
       <returns>The new <see cref="T:Devart.Data.PostgreSql.PgSqlParameter" /> object. </returns>
     </member>
@@ -4004,6 +4361,7 @@
     <member name="F:Devart.Data.PostgreSql.PgSqlPath.Null">
       <summary>Represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlPath" /> object. </summary>
       <keywords>PgSqlPath.Null field </keywords>
+      <value>An object that represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlPoint" /> value. </value>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlPath.Parse(System.String)">
       <summary>Converts the specified <see cref="T:System.String" /> representation of a path to its <see cref="T:Devart.Data.PostgreSql.PgSqlPath" /> equivalent. </summary>
@@ -4062,6 +4420,7 @@
     <member name="F:Devart.Data.PostgreSql.PgSqlPoint.Null">
       <summary>Represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlPoint" /> object. </summary>
       <keywords>PgSqlPoint.Null field </keywords>
+      <value>An object that represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlPoint" /> value. </value>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlPoint.Parse(System.String)">
       <summary>Converts the specified <see cref="T:System.String" /> representation of a point to its <see cref="T:Devart.Data.PostgreSql.PgSqlPoint" /> equivalent. </summary>
@@ -4124,6 +4483,7 @@
     <member name="F:Devart.Data.PostgreSql.PgSqlPolygon.Null">
       <summary>Represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlPolygon" /> object. </summary>
       <keywords>PgSqlPolygon.Null field </keywords>
+      <value>An object that represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlPolygon" /> value. </value>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlPolygon.Parse(System.String)">
       <summary>Converts the specified <see cref="T:System.String" /> representation of a polygon (similar to closed path) to its <see cref="T:Devart.Data.PostgreSql.PgSqlPolygon" /> equivalent. </summary>
@@ -4610,6 +4970,432 @@
       <keywords>PgSqlText.Value property </keywords>
       <value>The string to be stored or value retrieved from database. </value>
     </member>
+    <member name="T:Devart.Data.PostgreSql.PgSqlTime">
+      <summary>Represents the PostgreSQL date and timestamp data types. </summary>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.#ctor(System.Int32,System.Int32,System.Int32)">
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure with the specified hour, minute, and second. </summary>
+      <param name="hour">The specified hour. </param>
+      <param name="minute">The specified minute. </param>
+      <param name="second">The specified second. </param>
+      <overloads>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </overloads>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure with the specified hour, minute, second and microsecond. </summary>
+      <param name="hour">The specified hour. </param>
+      <param name="minute">The specified minute. </param>
+      <param name="second">The specified second. </param>
+      <param name="microsecond">The specified microsecond. </param>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.TimeSpan)">
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure with the specified hour, minute, second, microsecond, and the specified timezone. </summary>
+      <param name="hour">The specified hour. </param>
+      <param name="minute">The specified minute. </param>
+      <param name="second">The specified second. </param>
+      <param name="microsecond">The specified microsecond. </param>
+      <param name="timeZone"> </param>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.#ctor(System.Int32,System.Int32,System.Int32,System.TimeSpan)">
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure with the specified hour, minute, second, and the specified timezone. </summary>
+      <param name="hour">The specified hour. </param>
+      <param name="minute">The specified minute. </param>
+      <param name="second">The specified second. </param>
+      <param name="timeZone"> </param>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.#ctor(System.Int64)">
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure with the specified total number of microseconds. </summary>
+      <param name="timeTicks">The specified number of microseconds. </param>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.#ctor(System.Int64,System.TimeSpan)">
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure with the specified total number of microseconds and time zone. </summary>
+      <param name="timeTicks">The specified number of microseconds. </param>
+      <param name="timeZone">The specified time zone </param>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.#ctor(System.TimeSpan)">
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure with the specified <see cref="T:System.TimeSpan" /> value. </summary>
+      <param name="time">A <see cref="T:System.TimeSpan" /> value to initialize the new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> object with. </param>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.#ctor(System.TimeSpan,System.TimeSpan)">
+      <summary>Initializes a new instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure with the specified <see cref="T:System.TimeSpan" /> value and the specified time zone. </summary>
+      <param name="time">A <see cref="T:System.TimeSpan" /> value to initialize the new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> object with. </param>
+      <param name="timeZone">The specified time zone. </param>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.Add(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlInterval)">
+      <summary>Adds a <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> to a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.Add method </keywords>
+      <param name="x">The first item to add. </param>
+      <param name="t">The second item to add. </param>
+      <returns>The new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> that represents sum of the two arguments. </returns>
+      <overloads>Adds a <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> or <see cref="T:System.TimeSpan" /> to a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </overloads>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.Add(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Adds a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> to a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.Add method </keywords>
+      <param name="x">The first item to add. </param>
+      <param name="t">The second item to add. </param>
+      <returns>The new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> that represents sum of the two arguments. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.Add(Devart.Data.PostgreSql.PgSqlTime,System.TimeSpan)">
+      <summary>Adds a <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> to a <see cref="T:System.TimeSpan" /> structure. </summary>
+      <keywords>PgSqlTime.Add method </keywords>
+      <param name="x">The first item to add. </param>
+      <param name="t">The second item to add. </param>
+      <returns>The new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> that represents sum of the two arguments. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.AddHours(System.Double)">
+      <summary>Adds the specified number of hours to the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> instance. </summary>
+      <keywords>PgSqlTime.AddHours method </keywords>
+      <param name="value">The number of hours to add. </param>
+      <returns>A new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.AddMicroseconds(System.Int64)">
+      <summary>Adds the specified number of microseconds to the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> instance. </summary>
+      <keywords>PgSqlTime.AddMicroseconds method </keywords>
+      <param name="value">The specified number of microseconds. </param>
+      <returns>A new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.AddMinutes(System.Double)">
+      <summary>Adds the specified number of minutes to the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> instance. </summary>
+      <keywords>PgSqlTime.AddMinutes method </keywords>
+      <param name="value">The number of minutes to add. </param>
+      <returns>A new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.AddSeconds(System.Double)">
+      <summary>Adds the specified number of seconds to the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> instance. </summary>
+      <keywords>PgSqlTime.AddSeconds method </keywords>
+      <param name="value">The number of seconds to add. </param>
+      <returns>A new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.CompareTo(Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Compares the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> object to the specified <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> and returns an integer that represents their relative values. </summary>
+      <keywords>PgSqlTime.CompareTo method </keywords>
+      <param name="value">A <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value to compare with. </param>
+      <returns>A signed number indicating the relative values of the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure and the object.
+<list type="table">
+  <listheader>
+    <term>Return Value</term>
+    <description>Condition</description>
+  </listheader>
+  <item>
+    <term>Less than zero</term>
+    <description>The value of the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> is less than the argument.</description>
+  </item>
+  <item>
+    <term>Zero</term>
+    <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> is the same to the argument.</description>
+   </item>
+   <item>
+     <term>Greater than zero</term>
+     <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> is greater than the argument.</description>
+   </item>
+</list> </returns>
+      <overloads>Compares the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> object to the specified object. </overloads>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.CompareTo(System.Object)">
+      <summary>Compares the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> object to the specified object and returns an integer that represents their relative values. </summary>
+      <keywords>PgSqlTime.CompareTo method </keywords>
+      <param name="value">An object value to compare with. </param>
+      <returns>A signed number indicating the relative values of the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure and the object.
+<list type="table">
+  <listheader>
+    <term>Return Value</term>
+    <description>Condition</description>
+  </listheader>
+  <item>
+    <term>Less than zero</term>
+    <description>The value of the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> is less than the argument.</description>
+  </item>
+  <item>
+    <term>Zero</term>
+    <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> is the same to the argument.</description>
+   </item>
+   <item>
+     <term>Greater than zero</term>
+     <description>The current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> is greater than the argument.</description>
+   </item>
+</list> </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.Equals(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Determines whether two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values are equal. </summary>
+      <keywords>PgSqlTime.Equals method </keywords>
+      <param name="x">A <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value to compare. </param>
+      <param name="y">A <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value to compare. </param>
+      <returns><see langword="true" /> if two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values are equal; otherwise, <see langword="false" />. </returns>
+      <overloads>Compares two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structures to determine if they are equal. </overloads>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.Equals(System.Object)">
+      <summary>Compares the specified object parameter to the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </summary>
+      <keywords>PgSqlTime.Equals method </keywords>
+      <param name="value">The object to be compared. </param>
+      <returns><see langword="true" /> if object is an instance of the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> and has the same date and time; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.GetHashCode()">
+      <summary>Gets a hash code for the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> instance. </summary>
+      <keywords>PgSqlTime.GetHashCode method </keywords>
+      <returns>A 32-bit signed integer hash code. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.GreaterThan(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Determines whether the first of two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values is greater than the second. </summary>
+      <keywords>PgSqlTime.GreaterThan method </keywords>
+      <param name="x">The first <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="y">The second <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <returns><see langword="true" /> if the first of two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values is greater than the second; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.GreaterThanOrEqual(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Determines whether the first of two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values is greater than or equal to the second. </summary>
+      <keywords>PgSqlTime.GreaterThanOrEqual method </keywords>
+      <param name="x">The first <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="y">The second <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <returns><see langword="true" /> if the first of two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values is greater than or equal to the second; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlTime.Hour">
+      <summary>Gets the hour component of a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" />. </summary>
+      <keywords>PgSqlTime.Hour property </keywords>
+      <value>A number that represents an hour value between 0 and 23. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlTime.IsNull">
+      <summary>Gets a value indicating whether the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure represents <see cref="F:Devart.Data.PostgreSql.PgSqlTime.Null" />. </summary>
+      <keywords>PgSqlTime.IsNull property </keywords>
+      <value><see langword="true" /> if the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure represents <see cref="F:Devart.Data.PostgreSql.PgSqlTime.Null" />; otherwise, <see langword="false" />. </value>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.LessThan(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Determines whether the first of two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values is less than the second. </summary>
+      <keywords>PgSqlTime.LessThan method </keywords>
+      <param name="x">The first <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="y">The second <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <returns><see langword="true" /> if the first of two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values is less than the second; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.LessThanOrEqual(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Determines whether the first of two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values is less than or equal to the second. </summary>
+      <keywords>PgSqlTime.LessThanOrEqual method </keywords>
+      <param name="x">The first <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="y">The second <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <returns><see langword="true" /> if the first of two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values is less than or equal to the second; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlTime.MaxValue">
+      <summary>Represents the maximum valid date for a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.MaxValue field </keywords>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlTime.Microsecond">
+      <summary>Gets the microsecond component of a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" />. </summary>
+      <keywords>PgSqlTime.Microsecond property </keywords>
+      <value>Number of microseconds. </value>
+    </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlTime.MinValue">
+      <summary>Represents the minimum valid date for a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.MinValue field </keywords>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlTime.Minute">
+      <summary>Gets the minute component of a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" />. </summary>
+      <keywords>PgSqlTime.Minute property </keywords>
+      <value>A number that represents a minute value between 0 and 59. </value>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.NotEquals(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Determines whether two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values are not equal. </summary>
+      <keywords>PgSqlTime.NotEquals method </keywords>
+      <param name="x">The first <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="y">The second <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <returns><see langword="true" /> if two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values are not equal; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlTime.Null">
+      <summary>Represents a NULL value that can be assigned to the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.Null field </keywords>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.Parse(System.String)">
+      <summary>Converts the specified <see cref="T:System.String" /> representation of a date to its <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> equivalent. </summary>
+      <keywords>PgSqlTime.Parse method </keywords>
+      <param name="value">The <see cref="T:System.String" /> to be parsed. </param>
+      <returns>a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure equal to the date represented by the specified <see cref="T:System.String" />. </returns>
+      <overloads>Converts the specified <see cref="T:System.String" /> representation of a date to its <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> equivalent. </overloads>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.Parse(System.String,System.Boolean)">
+      <summary>Converts the specified <see cref="T:System.String" /> representation of a date to its <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> equivalent. </summary>
+      <keywords>PgSqlTime.Parse method </keywords>
+      <param name="value">The <see cref="T:System.String" /> to be parsed. </param>
+      <param name="withTimeZone">Determines whether to use the time zone. </param>
+      <returns>a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure equal to the date represented by the specified <see cref="T:System.String" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.Parse(System.String,System.String)">
+      <summary>Converts the specified <see cref="T:System.String" /> representation of a date to its <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> equivalent. </summary>
+      <keywords>PgSqlTime.Parse method </keywords>
+      <param name="value">The <see cref="T:System.String" /> to be parsed. </param>
+      <param name="format">A <see cref="T:System.String" /> that describes elements contained within <paramref name="value" />. The syntax is as in  the PostgreSQL to_timestamp function. </param>
+      <returns>a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure equal to the date represented by the specified <see cref="T:System.String" />. </returns>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlTime.Second">
+      <summary>Gets the second component of a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" />. </summary>
+      <keywords>PgSqlTime.Second property </keywords>
+      <value>A number that represents a second value between 0 and 59. </value>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.Subtract(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlInterval)">
+      <summary>Subtracts a <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> value from a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.Subtract method </keywords>
+      <param name="x">A <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure to subtract from. </param>
+      <param name="t">A <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> value to subtract. </param>
+      <returns>The new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure that represents the result of the subtract operation. </returns>
+      <overloads>Subtracts a value from a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </overloads>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.Subtract(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Subtracts a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value from another <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </summary>
+      <keywords>PgSqlTime.Subtract method </keywords>
+      <param name="x">A <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value to subtract from. </param>
+      <param name="y">A <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value to subtract. </param>
+      <returns>The <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> structure that represents the result of the subtract operation. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.Subtract(Devart.Data.PostgreSql.PgSqlTime,System.TimeSpan)">
+      <summary>Subtracts a <see cref="T:System.TimeSpan" /> value from a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.Subtract method </keywords>
+      <param name="x">A <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure to subtract from. </param>
+      <param name="t">A <see cref="T:System.TimeSpan" /> value to subtract. </param>
+      <returns>The new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure that represents the result of the subtract operation. </returns>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlTime.Ticks">
+      <summary>Gets the number of microseconds in the structure value. </summary>
+      <keywords>PgSqlTime.Ticks property </keywords>
+      <value>Thenumber of microseconds in the structure value. The value includes hours and minutes expressed in microseconds. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlTime.TimeZone">
+      <summary>Gets or sets the time zone of the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> object. </summary>
+      <keywords>PgSqlTime.TimeZone property </keywords>
+      <value>The time zone of the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> object. </value>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.ToString()">
+      <summary>Converts the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure to a <see cref="T:System.String" />. </summary>
+      <keywords>PgSqlTime.ToString method </keywords>
+      <returns>A <see cref="T:System.String" /> object. </returns>
+      <overloads>Converts the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure to a <see cref="T:System.String" />. </overloads>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.ToString(System.String)">
+      <summary>Converts the current <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure to a <see cref="T:System.String" /> using provided format string. </summary>
+      <keywords>PgSqlTime.ToString method </keywords>
+      <param name="format">Format to use for converting the string. </param>
+      <returns>A <see cref="T:System.String" /> object. </returns>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlTime.Value">
+      <summary>Gets the date and time that is stored in the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.Value property </keywords>
+      <value>A <see cref="T:System.DateTime" /> object. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlTime.WithTimeZone">
+      <summary>Determines whether this is a timestamp with time zone. </summary>
+      <keywords>PgSqlTime.WithTimeZone property </keywords>
+      <value><see langword="true" />, if this time value is stored with time zone; otherwise <see langword="false" />. </value>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_Addition(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlInterval)">
+      <summary>Adds the specified <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> to the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> and returns a new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.op_Addition method </keywords>
+      <param name="t1">The <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="t2">The <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> value. </param>
+      <returns>A new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_Addition(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Adds the specified object to the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> and returns a new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.op_Addition method </keywords>
+      <param name="t1">The first <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="t2">The second <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <returns>A new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_Addition(Devart.Data.PostgreSql.PgSqlTime,System.TimeSpan)">
+      <summary>Adds the specified <see cref="T:System.TimeSpan" /> to the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> and returns a new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.op_Addition method </keywords>
+      <param name="t1">The <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="t2">The <see cref="T:System.TimeSpan" /> value. </param>
+      <returns>A new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_Equality(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Determines whether two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values are equal. </summary>
+      <keywords>PgSqlTime.op_Equality method </keywords>
+      <param name="x">The first <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="y">The second <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <returns><see langword="true" /> if two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values are equal; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_Explicit(Devart.Data.PostgreSql.PgSqlTime)~Devart.Data.PostgreSql.PgSqlInterval">
+      <summary>Converts a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure to the <see cref="T:System.DateTime" /> object. </summary>
+      <keywords>PgSqlTime.op_Explicit method </keywords>
+      <param name="x">A <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure to convert. </param>
+      <returns>A <see cref="T:System.DateTime" /> object. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_Explicit(Devart.Data.PostgreSql.PgSqlTime)~System.DateTime">
+      <summary>Converts a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure to the <see cref="T:System.DateTime" /> object. </summary>
+      <keywords>PgSqlTime.op_Explicit method </keywords>
+      <param name="x">A <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure to convert. </param>
+      <returns>A <see cref="T:System.DateTime" /> object. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_Explicit(Devart.Data.PostgreSql.PgSqlTime)~System.DateTimeOffset">
+      <summary>Converts a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure to the <see cref="T:System.DateTime" /> object. </summary>
+      <keywords>PgSqlTime.op_Explicit method </keywords>
+      <param name="x">A <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure to convert. </param>
+      <returns>A <see cref="T:System.DateTime" /> object. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_Explicit(Devart.Data.PostgreSql.PgSqlTime)~System.TimeSpan">
+      <summary>Converts a <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure to the <see cref="T:System.DateTime" /> object. </summary>
+      <keywords>PgSqlTime.op_Explicit method </keywords>
+      <param name="x">A <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure to convert. </param>
+      <returns>A <see cref="T:System.DateTime" /> object. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_GreaterThan(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Compares two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structures to determine if the first is greater than the second. </summary>
+      <keywords>PgSqlTime.op_GreaterThan method </keywords>
+      <param name="x">The first <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="y">The second <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <returns><see langword="true" /> if the first of two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values is greater than the second; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_GreaterThanOrEqual(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Compares two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structures to determine if the first is greater than or equal to the second. </summary>
+      <keywords>PgSqlTime.op_GreaterThanOrEqual method </keywords>
+      <param name="x">The first <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="y">The second <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <returns><see langword="true" /> if the first of two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values is greater than or equal to the second; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_Implicit(System.DateTime)~Devart.Data.PostgreSql.PgSqlTime">
+      <summary>Converts a <see cref="T:System.DateTime" /> object to the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.op_Implicit method </keywords>
+      <param name="value">A <see cref="T:System.DateTime" /> object to convert. </param>
+      <returns>A <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_Inequality(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Determines whether two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values are not equal. </summary>
+      <keywords>PgSqlTime.op_Inequality method </keywords>
+      <param name="x">The first <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="y">The second <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <returns><see langword="true" /> if two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values are not equal; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_LessThan(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Compares two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structures to determine if the first is less than the second. </summary>
+      <keywords>PgSqlTime.op_LessThan method </keywords>
+      <param name="x">The first <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="y">The second <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <returns><see langword="true" /> if the first of two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values is less than the second; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_LessThanOrEqual(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Compares two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structures to determine if the first is less than or equal to the second. </summary>
+      <keywords>PgSqlTime.op_LessThanOrEqual method </keywords>
+      <param name="x">The first <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <param name="y">The second <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value. </param>
+      <returns><see langword="true" /> if the first of two <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> values is less than or equal to the second; otherwise, <see langword="false" />. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_Subtraction(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlInterval)">
+      <summary>Subtracts the specified <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> value from the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value and returns a new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.op_Subtraction method </keywords>
+      <param name="t1"> </param>
+      <param name="t2"> </param>
+      <returns>A new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </returns>
+      <overloads>Subtracts the specified object from the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </overloads>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_Subtraction(Devart.Data.PostgreSql.PgSqlTime,Devart.Data.PostgreSql.PgSqlTime)">
+      <summary>Subtracts the specified <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value from another <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value and returns a new <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> value. </summary>
+      <keywords>PgSqlTime.op_Subtraction method </keywords>
+      <param name="t1"> </param>
+      <param name="t2"> </param>
+      <returns>A new <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" /> structure. </returns>
+    </member>
+    <member name="M:Devart.Data.PostgreSql.PgSqlTime.op_Subtraction(Devart.Data.PostgreSql.PgSqlTime,System.TimeSpan)">
+      <summary>Subtracts the specified <see cref="T:System.TimeSpan" /> value from the <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> value and returns a new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </summary>
+      <keywords>PgSqlTime.op_Subtraction method </keywords>
+      <param name="t1"> </param>
+      <param name="t2"> </param>
+      <returns>A new <see cref="T:Devart.Data.PostgreSql.PgSqlTime" /> structure. </returns>
+    </member>
     <member name="T:Devart.Data.PostgreSql.PgSqlTimeStamp">
       <summary>Represents the PostgreSQL date and timestamp data types. </summary>
     </member>
@@ -4828,6 +5614,7 @@
     <member name="F:Devart.Data.PostgreSql.PgSqlTimeStamp.Epoch">
       <summary>Returns the date 1970-01-01 00:00:00-00. </summary>
       <keywords>PgSqlTimeStamp.Epoch field </keywords>
+      <value>The date 1970-01-01 00:00:00-00. </value>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlTimeStamp.Equals(Devart.Data.PostgreSql.PgSqlTimeStamp,Devart.Data.PostgreSql.PgSqlTimeStamp)">
       <summary>Determines whether two <see cref="T:Devart.Data.PostgreSql.PgSqlTimeStamp" /> values are equal. </summary>
@@ -4934,6 +5721,7 @@
     <member name="F:Devart.Data.PostgreSql.PgSqlTimeStamp.Null">
       <summary>Represents a NULL value that can be assigned to the <see cref="T:Devart.Data.PostgreSql.PgSqlTimeStamp" /> structure. </summary>
       <keywords>PgSqlTimeStamp.Null field </keywords>
+      <value>An object that represents a null <see cref="T:Devart.Data.PostgreSql.PgSqlTimeStamp" /> value. </value>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlTimeStamp.Parse(System.String)">
       <summary>Converts the specified <see cref="T:System.String" /> representation of a date to its <see cref="T:Devart.Data.PostgreSql.PgSqlTimeStamp" /> equivalent. </summary>
@@ -5020,6 +5808,11 @@
       <summary>Gets the date and time that is stored in the <see cref="T:Devart.Data.PostgreSql.PgSqlTimeStamp" /> structure. </summary>
       <keywords>PgSqlTimeStamp.Value property </keywords>
       <value>A <see cref="T:System.DateTime" /> object. </value>
+    </member>
+    <member name="P:Devart.Data.PostgreSql.PgSqlTimeStamp.WithTimeZone">
+      <summary>Determines whether this is a timestamp with time zone. </summary>
+      <keywords>PgSqlTimeStamp.WithTimeZone property </keywords>
+      <value><see langword="true" />, if this timestamp is stored with time zone; otherwise <see langword="false" />. </value>
     </member>
     <member name="P:Devart.Data.PostgreSql.PgSqlTimeStamp.Year">
       <summary>Gets the year component of a <see cref="T:Devart.Data.PostgreSql.PgSqlTimeStamp" />. </summary>
@@ -5215,7 +6008,7 @@
     <member name="P:Devart.Data.PostgreSql.PgSqlTransaction.IsolationLevel">
       <summary>Specifies the <see cref="T:System.Data.IsolationLevel" /> for this transaction. </summary>
       <keywords>PgSqlTransaction.IsolationLevel property </keywords>
-      <value>The <see cref="T:System.Data.IsolationLevel" /> for this transaction. The default value is <see cref="T:System.Data.IsolationLevel.ReadCommitted" />. </value>
+      <value>The <see cref="T:System.Data.IsolationLevel" /> for this transaction. The default value is IsolationLevel.ReadCommitted. </value>
     </member>
     <member name="M:Devart.Data.PostgreSql.PgSqlTransaction.Release(System.String)">
       <summary>Removes the named savepoint from the set of savepoints of the current transaction. </summary>
@@ -5241,10 +6034,13 @@
       <summary>Specifies the data type of a field, property, <see cref="T:Devart.Data.PostgreSql.PgSqlParameter" /> or <see cref="T:Devart.Data.PostgreSql.PgSqlAttribute" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Array">
-      <summary>A PostgreSQL array data type. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlArray" /> class or the <see cref="T:System.Srting" />. </summary>
+      <summary>A PostgreSQL array data type. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlArray" /> class or the <see cref="T:System.String" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.BigInt">
       <summary>A PostgreSQL bigint data type that contains a 64-bit signed integer. Represented as the <see cref="T:System.Int64" />. </summary>
+    </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlType.BigIntRange">
+      <summary>A PostgreSQL int8range type. Represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlBigIntRange" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Bit">
       <summary>A PostgreSQL bit data type that contains a fixed-length bit string. Represented as the <see cref="T:System.BitArray" />. </summary>
@@ -5253,37 +6049,52 @@
       <summary>A simple type representing Boolean values of <see langword="true" /> or <see langword="false" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Box">
-      <summary>A PostgreSQL box geometric data type that represents rectangular box in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlBox" /> class or the <see cref="T:System.Srting" />. </summary>
+      <summary>A PostgreSQL box geometric data type that represents rectangular box in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlBox" /> class or the <see cref="T:System.String" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.ByteA">
       <summary>A PostgreSQL bytea data type that contains a variable-length stream of binary data. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlBlob" /> class or the array of <see cref="T:System.Byte" />. </summary>
+    </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlType.CIdr">
+      <summary>A PostgreSQL cidr data type that contains a an IPv4 or IPv6 network specification. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> class. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Char">
       <summary>A PostgreSQL char data type that contains a fixed-length character string. Represented as the <see cref="T:System.String" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Circle">
-      <summary>A PostgreSQL circle geometric data type that represents circle in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlCircle" /> class or the <see cref="T:System.Srting" />. </summary>
+      <summary>A PostgreSQL circle geometric data type that represents circle in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlCircle" /> class or the <see cref="T:System.String" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Date">
       <summary>A PostgreSQL date data type that contains a fixed-length representation of a date value. Represented as the <see cref="T:System.DateTime" />. </summary>
     </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlType.DateRange">
+      <summary>A PostgreSQL daterange type. Represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlDateRange" />. </summary>
+    </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Double">
       <summary>A PostgreSQL double data type that contains a double-precision floating-point value. A floating point type representing values ranging from approximately 5.0 x 10(-324) to 1.7 x 10(308) with a precision of 15-16 digits. Represented as the <see cref="T:System.Double" />. </summary>
     </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlType.Inet">
+      <summary>A PostgreSQL inet data type that contains an IPv4 or IPv6 address and optionally its subnet. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlInet" /> class. </summary>
+    </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Int">
       <summary>A PostgreSQL integer data type that contains a 32-bit signed integer. Represented as the <see cref="T:System.Int32" />. </summary>
+    </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlType.IntRange">
+      <summary>A PostgreSQL int4range type. Represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlIntRange" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Interval">
       <summary>A PostgreSQL interval data type that contains an interval of time in days, hours, minutes, and seconds. Represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlInterval" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.LSeg">
-      <summary>A PostgreSQL lseg geometric data type that represents line segment in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlLSeg" /> class or the <see cref="T:System.Srting" />. </summary>
+      <summary>A PostgreSQL lseg geometric data type that represents line segment in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlLSeg" /> class or the <see cref="T:System.String" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.LargeObject">
-      <summary>A PostgreSQL large object. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlLargeObject" /> class or the <see cref="T:System.Srting" />. </summary>
+      <summary>A PostgreSQL large object. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlLargeObject" /> class or the <see cref="T:System.String" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Line">
-      <summary>A PostgreSQL line geometric data type that represents infinite line in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlLSeg" /> class or the <see cref="T:System.Srting" />. </summary>
+      <summary>A PostgreSQL line geometric data type that represents infinite line in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlLSeg" /> class or the <see cref="T:System.String" />. </summary>
+    </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlType.MacAddr">
+      <summary>A PostgreSQL macaddr data type that contains a MAC address. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlMacAddr" /> class. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Money">
       <summary>A PostgreSQL money data type that contains a currency amount with a fixed fractional precision. </summary>
@@ -5291,14 +6102,17 @@
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Numeric">
       <summary>A PostgreSQL numeric data type that contains exact numeric data with selectable precision. Represented as the <see cref="T:System.Decimal" />. </summary>
     </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlType.NumericRange">
+      <summary>A PostgreSQL daterange type. Represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlDateRange" />. </summary>
+    </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Path">
-      <summary>A PostgreSQL path geometric data type that represents open and closed geometric path in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlPath" /> class or the <see cref="T:System.Srting" />. </summary>
+      <summary>A PostgreSQL path geometric data type that represents open and closed geometric path in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlPath" /> class or the <see cref="T:System.String" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Point">
-      <summary>A PostgreSQL point geometric data type that represents geometric point in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlPoint" /> class or the <see cref="T:System.Srting" />. </summary>
+      <summary>A PostgreSQL point geometric data type that represents geometric point in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlPoint" /> class or the <see cref="T:System.String" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Polygon">
-      <summary>A PostgreSQL polygon geometric data type that represents closed geometric path in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlPolygon" /> class or the <see cref="T:System.Srting" />. </summary>
+      <summary>A PostgreSQL polygon geometric data type that represents closed geometric path in the plane. May be represented as the <see cref="T:Devart.Data.PostgreSql.PgSqlPolygon" /> class or the <see cref="T:System.String" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.Real">
       <summary>A PostgreSQL real data type that contains a single-precision floating-point value. Represented as the <see cref="T:System.Single" />. </summary>
@@ -5318,8 +6132,14 @@
     <member name="F:Devart.Data.PostgreSql.PgSqlType.TimeStamp">
       <summary>A PostgreSQL timestamp data type that contains date and time, including seconds. Represented as the <see cref="T:System.DateTime" />. </summary>
     </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlType.TimeStampRange">
+      <summary>Represents the PostgreSQL tsrange type. Represented as <see cref="T:Devart.Data.PostgreSql.PgSqlTimeStampRange" />. </summary>
+    </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.TimeStampTZ">
       <summary>A PostgreSQL timestamp with time zone data type that contains date and time, including seconds, with time zone. Represented as the <see cref="T:System.DateTime" />. </summary>
+    </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlType.TimeStampTZRange">
+      <summary>Represents the PostgreSQL tstzrange type. Represented as <see cref="T:Devart.Data.PostgreSql.PgSqlTimeStampTZRange" />. </summary>
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.TimeTZ">
       <summary>A PostgreSQL time with time zone data type that contains a fixed-length representation of a time value with time zone. Represented as the <see cref="T:System.TimeSpan" />. </summary>
@@ -5332,6 +6152,9 @@
     </member>
     <member name="F:Devart.Data.PostgreSql.PgSqlType.VarChar">
       <summary>A PostgreSQL varchar data type that contains a variable-length character string. Represented as the <see cref="T:System.String" />. </summary>
+    </member>
+    <member name="F:Devart.Data.PostgreSql.PgSqlType.Xml">
+      <summary>A PostgreSQL xml type that contains XML data. May be represented as the <see cref="T:System.String" /> object. </summary>
     </member>
     <member name="T:Devart.Data.PostgreSql.ProtocolVersion">
       <summary>Specifies version of protocol to be used when more than one is available. </summary>

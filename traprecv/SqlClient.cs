@@ -30,7 +30,7 @@ namespace traprecv
                                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
                                     "\\sqllog.sil\",rotate=weekly,append=true,maxparts=5,maxsize=500MB)";
         }
-
+        /*
         public void LoadDatatable(DataTable dt)
         {
             using (PgSqlConnection pgSqlConnection = new PgSqlConnection(pgCSB.ConnectionString))
@@ -60,6 +60,8 @@ namespace traprecv
                 }
             }
         }
+        */
+        /*
         public void SqlScriptCmd(string script)
         {
             using (PgSqlConnection pgSqlConnection = new PgSqlConnection(pgCSB.ConnectionString))
@@ -83,7 +85,8 @@ namespace traprecv
                 }
             }
         }
-
+        */
+        /*
         void pgscScript_Error(object sender, Devart.Common.ScriptErrorEventArgs e)
         {
             e.Ignore = true;
@@ -98,6 +101,7 @@ namespace traprecv
             SiAuto.Main.LogText("SqlScript",e.Text);
             Console.WriteLine("  Successfully executed.");
         }
+        */
         public DataTable get_DataTable(string cmd)
         {
             PgSqlCommand command = null;
@@ -107,7 +111,7 @@ namespace traprecv
                 try
                 {
 
-                    {
+                    //{
                         //DataTable datatable = new DataTable();
                         command = pgSqlConnection.CreateCommand();
                         command.CommandText = cmd;
@@ -118,10 +122,10 @@ namespace traprecv
                         //IAsyncResult cres = command.BeginExecuteReader();
                         //Console.Write("In progress...");
                         //while (!cres.IsCompleted)
-                        {
+                        //{
                             //Console.Write(".");
                             //Perform here any operation you need
-                        }
+                        //}
 
                         //if (cres.IsCompleted)
                         //Console.WriteLine("Completed.");
@@ -129,9 +133,9 @@ namespace traprecv
                         //Console.WriteLine("Have to wait for operation to complete...");
                         //PgSqlDataReader myReader = command.EndExecuteReader(cres);
                         //PgSqlDataReader myReader = command.ExecuteReader();
-                        try
-                        {
-                            {
+                        //try
+                        //{
+                            //{
 
 
                                 //IAsyncResult cres = command.BeginExecuteReader();
@@ -168,15 +172,15 @@ namespace traprecv
                                     //Console.WriteLine(myReader.GetInt32(0) + "\t" + myReader.GetString(1) + "\t");
                                 }
                                 myReader.Close();
-
+                                pgSqlConnection.Close();
                                 //myReader.Dispose();
-                            }
-                        }
-                        finally
-                        {
+                            //}
+                        //}
+                        //finally
+                        //{
 
-                            pgSqlConnection.Close();
-                        }
+                            //pgSqlConnection.Close();
+                        //}
                         /*
                         foreach (DataRow row in datatable.Rows) // Loop over the rows.
                         {
@@ -200,7 +204,7 @@ namespace traprecv
                         }
                         //DataTable returnTable = datatable.Copy();
 
-                    }
+                    //}
 
 
                 }
@@ -234,6 +238,7 @@ namespace traprecv
                     {
                         //insert
                         command = pgSqlConnection.CreateCommand();
+                        command.UnpreparedExecute = true;
                         command.CommandText = cmd;
                         //command.CommandTimeout = 30;
 
@@ -244,7 +249,7 @@ namespace traprecv
 
 
 
-                        {
+                        //{
                             pgSqlConnection.Open();
                             myTrans = pgSqlConnection.BeginTransaction(IsolationLevel.ReadCommitted);
                             command.Transaction = myTrans;
@@ -253,14 +258,15 @@ namespace traprecv
                             //lock (accessLock)
                             RowsAffected = command.ExecuteNonQuery();
                             myTrans.Commit();
-                        }
+                            pgSqlConnection.Close();
+                        //}
                         //IAsyncResult cres=command.BeginExecuteNonQuery(null,null);
                         //Console.Write("In progress...");
                         //while (!cres.IsCompleted)
-                        {
+                        //{
                             //Console.Write(".");
                             //Perform here any operation you need
-                        }
+                        //}
                         /*
                     if (cres.IsCompleted)
                         Console.WriteLine("Completed.");
