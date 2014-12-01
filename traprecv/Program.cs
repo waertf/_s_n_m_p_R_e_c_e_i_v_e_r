@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Timers;
 using CsvHelper;
 using SnmpSharpNet;
 using Gurock.SmartInspect;
@@ -63,13 +64,23 @@ namespace traprecv {
                     {
                         deviceName = getStrings[0];
                         stateId = getStrings[1];
-                        SendStatusSMS(deviceName, stateId);
+                        //SendStatusSMS(deviceName, stateId);
                     }
                 }
                 //});
             };
             smsSendTimer.Enabled = true;
             #endregion sms
+
+            #region sendSmsIfStatusStillInSpecficTime
+            System.Timers.Timer timerSmsSend = new System.Timers.Timer();
+            //計時器啟動
+            timerSmsSend.Elapsed += new ElapsedEventHandler(timerSmsSend_Elapsed);
+            //計時器啟動 設定觸發時間
+            timerSmsSend.Interval = 60000;
+            timerSmsSend.Start();
+            #endregion sendSmsIfStatusStillInSpecficTime
+
             bool run = true;
 			while (run) {
 				byte[] indata = new byte[16 * 1024];
@@ -254,7 +265,7 @@ public.device_status_now.device_no = " + DeviceNo;
                                       else
                                       {
                                           //update
-                                          updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" ,message = $$" + eventMessage + @"$$ WHERE device_no = " + DeviceNo + @",update_time=now()";
+                                          updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" ,message = $$" + eventMessage + @"$$ " + @",update_time=now(),siteAndDeviceName='" + SiteCName + " " + DeviceCName + @"',send_status = 0 WHERE device_no = " + DeviceNo;
                                           pgsqSqlClient.modify(updateSqlScript);
                                           //send sms
                                           //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
@@ -273,7 +284,7 @@ public.device_status_now.device_no = " + DeviceNo;
                           else
                           {
                               //insert
-                              string insertSqlScript = @"INSERT INTO device_status_now VALUES (" + DeviceNo + @"," + serverityLevel + @",$$" + eventMessage + "$$" + @",now())";
+                              string insertSqlScript = @"INSERT INTO device_status_now VALUES (" + DeviceNo + @"," + serverityLevel + @",$$" + eventMessage + "$$" + @",now(),0,'"+SiteCName+" "+DeviceCName+@"')";
                               pgsqSqlClient.modify(insertSqlScript);
                               //send sms
                               //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
@@ -476,6 +487,98 @@ VALUES
 				}
 			}
 		}
+
+        private static string smsCheckStillStatusInterval = ConfigurationManager.AppSettings["status_still_time"];
+        private static void timerSmsSend_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            
+            string strQuery = @"SELECT msg_nbi_send.phone_number, device_status_now.status_code, device_status_now.site_and_device_name,device_status_now.update_time 
+FROM device_status_now INNER JOIN msg_nbi_send ON device_status_now.status_code = msg_nbi_send.message_no 
+where device_status_now.send_status = 0 and (now() - device_status_now.update_time) > interval '"+smsCheckStillStatusInterval+@"' = 't'
+ORDER BY msg_nbi_send.phone_number, device_status_now.update_time";
+            string phoneNumber = null, status = null, deviceName = null;
+            StringBuilder smsInsertSqlScriptBuilder = new StringBuilder(0);
+            StringBuilder smsHistoryBuilder = new StringBuilder(0);
+            try
+            {
+                using (DataTable dt0 = smsSqlClient.get_DataTable(strQuery))
+                {
+                    if (dt0 != null && dt0.Rows.Count != 0)
+                    {
+                        foreach (DataRow row in dt0.Rows)
+                        {
+                            phoneNumber = row[0].ToString();
+                            status = row[1].ToString();
+                            deviceName = row[2].ToString();
+                            status = getChineseStatusDescript(status);
+                            string insertSqlScript = @"INSERT INTO t_sendsms (
+	m_sender,
+	m_recver,
+	m_recvtime,
+	m_content,
+	m_phoneno,
+	m_status
+)
+VALUES
+	(
+		'" + m_sender + @"',
+		'" + phoneNumber + @"',
+		'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + @"',
+		'" + m_sender + @"(UEM)" + deviceName + ":" + status + @"',
+		1,
+		" + sendSMS + @"
+	);";
+                            string smsHistory = @"INSERT INTO ams_history (phone_number,message_note) VALUES ('" + phoneNumber + @"','" + m_sender + @"(UEM)" + deviceName + ":" + status + @"');";
+                            smsInsertSqlScriptBuilder.AppendLine(insertSqlScript);
+                            smsHistoryBuilder.AppendLine(smsHistory);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            string sqlCmd =
+                @"update device_status_now set send_status = 1 where send_status = 0 and (now() - update_time) > interval '" + smsCheckStillStatusInterval + @"' = 't'";
+            smsSqlClient.modify(sqlCmd);
+            if (!smsInsertSqlScriptBuilder.Length.Equals(0))
+            {
+                smsSqlClient.modify(smsInsertSqlScriptBuilder.ToString());
+            }
+            if (!smsHistoryBuilder.Length.Equals(0))
+            {
+                pgsqSqlClient.modify(smsHistoryBuilder.ToString());
+            }
+        }
+
+        private static string getChineseStatusDescript(string status)
+        {
+            string queryStateChineseDescription = @"SELECT
+public.alarm_set_nbi.cnote
+FROM
+public.alarm_set_nbi
+WHERE
+public.alarm_set_nbi.serial_no = " + status;
+            try
+            {
+                using (DataTable dt = pgsqSqlClient.get_DataTable(queryStateChineseDescription))
+                {
+                    if (dt != null && dt.Rows.Count != 0)
+                    {
+                        return dt.Rows[0].ItemArray[0].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+                return null;
+            }
+            return null;
+        }
 
 	    static DateTime convertOctetStringToDateTime(string input)
         {
