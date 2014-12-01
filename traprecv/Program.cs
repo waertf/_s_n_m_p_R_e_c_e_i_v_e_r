@@ -177,6 +177,10 @@ namespace traprecv {
                             Console.WriteLine("serverityLevel:" + serverityLevel +
                                     Environment.NewLine + "location:" + location + Environment.NewLine +
                                     "eventMessage:" + eventMessage);
+                            if(serverityLevel.Equals("0"))
+                                SiAuto.Main.LogWarning("serverityLevel:" + serverityLevel +
+                                    Environment.NewLine + "location:" + location + Environment.NewLine +
+                                    "eventMessage:" + eventMessage);
 						    if (smsSB.ToString().Equals(location + "&" +serverityLevel))
 						    {
 						        //do nothing
