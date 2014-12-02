@@ -73,12 +73,24 @@ namespace traprecv {
             #endregion sms
 
             #region sendSmsIfStatusStillInSpecficTime
+            /*
             System.Timers.Timer timerSmsSend = new System.Timers.Timer();
             //計時器啟動
             timerSmsSend.Elapsed += new ElapsedEventHandler(timerSmsSend_Elapsed);
             //計時器啟動 設定觸發時間
             timerSmsSend.Interval = 60000;
             timerSmsSend.Start();
+            */
+            System.Threading.Thread t1 = new System.Threading.Thread
+      (delegate()
+      {
+          while (true)
+          {
+              Thread.Sleep(new TimeSpan(0,0,1,0));
+              timerSmsSend_Elapsed();
+          }
+      });
+            t1.Start();
             #endregion sendSmsIfStatusStillInSpecficTime
 
             bool run = true;
@@ -489,7 +501,8 @@ VALUES
 		}
 
         private static string smsCheckStillStatusInterval = ConfigurationManager.AppSettings["status_still_time"];
-        private static void timerSmsSend_Elapsed(object sender, ElapsedEventArgs e)
+        //private static void timerSmsSend_Elapsed(object sender, ElapsedEventArgs e)
+        private static void timerSmsSend_Elapsed()
         {
             
             string strQuery = @"SELECT msg_nbi_send.phone_number, device_status_now.status_code, device_status_now.site_and_device_name,device_status_now.update_time 
