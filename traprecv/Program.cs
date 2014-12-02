@@ -181,7 +181,7 @@ namespace traprecv {
 							            }
                                         break;
                                     case "1.3.6.1.4.1.161.3.10.105.13.0"://event message
-                                        eventMessage = v.Value.ToString();
+                                        eventMessage = v.Value.ToString().Replace(@"'",@"''");
                                         break;
 							    }
 							}
@@ -265,7 +265,7 @@ public.device_status_now.device_no = " + DeviceNo;
                                       else
                                       {
                                           //update
-                                          updateSqlScript = @"UPDATE public.device_status_now SET status_code = " + serverityLevel + @" ,message = $$" + eventMessage + @"$$ " + @",update_time=now(),site_and_device_name='" + SiteCName + " " + DeviceCName + @"',send_status = 0 WHERE device_no = " + DeviceNo;
+                                          updateSqlScript = @"UPDATE public.device_status_now SET status_code = " + serverityLevel + @" ,message = '" + eventMessage + @"' " + @",update_time=now(),site_and_device_name='" + SiteCName + " " + DeviceCName + @"',send_status = 0 WHERE device_no = " + DeviceNo;
                                           pgsqSqlClient.modify(updateSqlScript);
                                           //send sms
                                           //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
@@ -284,7 +284,7 @@ public.device_status_now.device_no = " + DeviceNo;
                           else
                           {
                               //insert
-                              string insertSqlScript = @"INSERT INTO public.device_status_now VALUES (" + DeviceNo + @"," + serverityLevel + @",$$" + eventMessage + "$$" + @",now(),0,'" + SiteCName + " " + DeviceCName + @"')";
+                              string insertSqlScript = @"INSERT INTO public.device_status_now VALUES (" + DeviceNo + @"," + serverityLevel + @",'" + eventMessage + "'" + @",now(),0,'" + SiteCName + " " + DeviceCName + @"')";
                               pgsqSqlClient.modify(insertSqlScript);
                               //send sms
                               //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
@@ -433,7 +433,7 @@ public.device_info.device_name = '" + location + "'";
 	message_note
 )
 VALUES
-	(" + DeviceNo + @", " + serverityLevel + @", $$" + eventMessage + "$$)";
+	(" + DeviceNo + @", " + serverityLevel + @", '" + eventMessage + "')";
                       pgsqSqlClient.modify(insertSqlScript);
                   }
               }
