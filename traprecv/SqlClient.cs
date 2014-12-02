@@ -241,6 +241,7 @@ namespace traprecv
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("GetDataTable exception occurs: {0}" + Environment.NewLine + "{1}", ex.Error, cmd);
                     Console.ResetColor();
+                    SiAuto.Main.LogError(cmd);
                     //if (command != null)
                     //command.Dispose();
                     command = null;
@@ -334,7 +335,7 @@ namespace traprecv
                     if (myTrans != null) myTrans.Rollback();
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Modify exception occurs: {0}" + Environment.NewLine + "{1}", ex.Error, cmd);
-
+                    SiAuto.Main.LogError(cmd);
                     Console.ResetColor();
                     //pgSqlConnection.Rollback();
                     //command.Dispose();
