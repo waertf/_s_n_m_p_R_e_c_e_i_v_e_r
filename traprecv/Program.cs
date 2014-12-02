@@ -265,7 +265,7 @@ public.device_status_now.device_no = " + DeviceNo;
                                       else
                                       {
                                           //update
-                                          updateSqlScript = @"UPDATE device_status_now SET status_code = " + serverityLevel + @" ,message = $$" + eventMessage + @"$$ " + @",update_time=now(),siteAndDeviceName='" + SiteCName + " " + DeviceCName + @"',send_status = 0 WHERE device_no = " + DeviceNo;
+                                          updateSqlScript = @"UPDATE public.device_status_now SET status_code = " + serverityLevel + @" ,message = $$" + eventMessage + @"$$ " + @",update_time=now(),site_and_device_name='" + SiteCName + " " + DeviceCName + @"',send_status = 0 WHERE device_no = " + DeviceNo;
                                           pgsqSqlClient.modify(updateSqlScript);
                                           //send sms
                                           //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
@@ -284,7 +284,7 @@ public.device_status_now.device_no = " + DeviceNo;
                           else
                           {
                               //insert
-                              string insertSqlScript = @"INSERT INTO device_status_now VALUES (" + DeviceNo + @"," + serverityLevel + @",$$" + eventMessage + "$$" + @",now(),0,'"+SiteCName+" "+DeviceCName+@"')";
+                              string insertSqlScript = @"INSERT INTO public.device_status_now VALUES (" + DeviceNo + @"," + serverityLevel + @",$$" + eventMessage + "$$" + @",now(),0,'" + SiteCName + " " + DeviceCName + @"')";
                               pgsqSqlClient.modify(insertSqlScript);
                               //send sms
                               //if (serverityLevel.Equals("1") || serverityLevel.Equals("2"))
@@ -501,7 +501,7 @@ ORDER BY msg_nbi_send.phone_number, device_status_now.update_time";
             StringBuilder smsHistoryBuilder = new StringBuilder(0);
             try
             {
-                using (DataTable dt0 = smsSqlClient.get_DataTable(strQuery))
+                using (DataTable dt0 = pgsqSqlClient.get_DataTable(strQuery))
                 {
                     if (dt0 != null && dt0.Rows.Count != 0)
                     {
@@ -542,7 +542,7 @@ VALUES
             }
             string sqlCmd =
                 @"update device_status_now set send_status = 1 where send_status = 0 and (now() - update_time) > interval '" + smsCheckStillStatusInterval + @"' = 't'";
-            smsSqlClient.modify(sqlCmd);
+            pgsqSqlClient.modify(sqlCmd);
             if (!smsInsertSqlScriptBuilder.Length.Equals(0))
             {
                 smsSqlClient.modify(smsInsertSqlScriptBuilder.ToString());
